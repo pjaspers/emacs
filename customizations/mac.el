@@ -4,6 +4,10 @@
 ; delete files by moving them to the OS X trash
 (setq delete-by-moving-to-trash t)
 
+;; Always open in the same window
+(setq ns-pop-up-frames nil)
+
+;; Fullscreen shortcut
 (global-set-key [f1] 'ns-toggle-fullscreen)
 
 ;; Set alt to be meta, to be in line with terminal use.
