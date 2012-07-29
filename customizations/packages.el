@@ -6,7 +6,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar pjaspers-packages '(rvm inf-ruby yaml-mode css-mode coffee-mode magit)
+(defvar pjaspers-packages '(rvm inf-ruby yaml-mode css-mode coffee-mode magit mo-git-blame)
   "List of packages that I use all the time.")
 
 (dolist (p pjaspers-packages)
