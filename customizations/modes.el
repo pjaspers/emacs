@@ -18,12 +18,15 @@
 ;; Yaml
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 (add-hook 'yaml-mode-hook
-    '(lambda ()
-       (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
+	  '(lambda ()
+	     (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
 
 ;; Magit
 (eval-after-load 'magit
   '(progn
      (setq magit-git-executable "/usr/local/bin/git")
-     (set-face-foreground 'magit-diff-add "green3")
-     (set-face-foreground 'magit-diff-del "red3")))
+     (set-face-attribute 'magit-diff-add nil :foreground "#559944")
+     (set-face-attribute 'magit-diff-del nil :foreground "#de1923")
+     (set-face-attribute 'magit-diff-file-header nil :foreground "RoyalBlue1")
+     (set-face-attribute 'magit-diff-hunk-header nil :foreground "#fbde2d")
+     (set-face-attribute 'magit-item-highlight nil :background "black")))
