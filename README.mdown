@@ -1,0 +1,19 @@
+## Introduction
+
+My current set of .emacs files.
+
+Mainly used to edit:
+
+- Ruby
+- Javascript
+- Lisp
+- Some Obj-C
+
+Also used to:
+
+- manage git (`magit` is simply awesome)
+- org-mode
+
+## How to install
+
+Clone this file to your `~/.emacs.d`

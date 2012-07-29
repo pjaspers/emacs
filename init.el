@@ -1,6 +1,9 @@
+(add-to-list 'load-path "~/.emacs.d/")
+
 ; custom place to save customizations
 (setq custom-file "~/.emacs.d/pjaspers/custom.el")
 (when (file-exists-p "custom.el") (load "custom"))
+
 
 (load "customizations/ui")		;; Set up all things colors/fonts/appearance
 (load "customizations/bindings")	;; All non platform specific bindings
