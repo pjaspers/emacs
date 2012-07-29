@@ -6,9 +6,13 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar pjaspers-packages '(rvm inf-ruby yaml-mode css-mode coffee-mode magit mo-git-blame)
-  "List of packages that I use all the time.")
+(setq ruby-packages '(rvm inf-ruby yaml-mode))
+(setq js-packages '(js2-mode coffee-mode))
+(setq git-packages '(magit mo-git-blame))
+
+(setq pjaspers-packages (append ruby-packages js-packages git-packages))
 
 (dolist (p pjaspers-packages)
+  (princ p)
   (when (not (package-installed-p p))
     (package-install p)))
