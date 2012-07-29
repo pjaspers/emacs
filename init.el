@@ -8,17 +8,16 @@
 ;; Explictly setting it here (So shell-command and buddies can use it)
 (setq path "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/sbin:/AdobeAIRSDK/bin:/usr/local/share/npm/bin:/usr/local/texlive/2011basic/bin/universal-darwin/")
 
-
-
 (setenv "PATH" path)
 
 ; custom place to save customizations
 (setq custom-file "~/.emacs.d/pjaspers/custom.el")
 (when (file-exists-p "custom.el") (load "custom"))
 
-(load "customizations/ui")
-(load "customizations/bindings")
-(load "customizations/packages")
+(load "customizations/ui")		;; Set up all things colors/fonts/appearance
+(load "customizations/bindings")	;; All non platform specific bindings
+(load "customizations/mac")		;; All things related to the mac
+(load "customizations/packages")	;; Fetch modes
 
 
 

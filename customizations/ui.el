@@ -34,5 +34,5 @@
 ;; no newlines past EOF
 (setq next-line-add-newlines nil)
 
-:: Theme
+;; Theme
 (load-theme 'tango-dark)
