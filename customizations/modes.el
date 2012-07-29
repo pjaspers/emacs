@@ -30,3 +30,20 @@
      (set-face-attribute 'magit-diff-file-header nil :foreground "RoyalBlue1")
      (set-face-attribute 'magit-diff-hunk-header nil :foreground "#fbde2d")
      (set-face-attribute 'magit-item-highlight nil :background "black")))
+
+; rhtml
+(setq auto-mode-alist (cons '("\\.html\\.erb" . nxml-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.erb" . nxml-mode) auto-mode-alist))
+
+; ruby
+(vendor 'ruby-hacks)
+(setq auto-mode-alist (cons '("Rakefile" . ruby-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("Capfile" . ruby-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.rake" . ruby-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.god" . ruby-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.ru" . ruby-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.gemspec" . ruby-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("Gemfile" . ruby-mode) auto-mode-alist))
+
+;; Whitespace cleanup
+(add-hook 'ruby-mode-hook (lambda () (whitespace-mode 1)))
