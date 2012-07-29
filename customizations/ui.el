@@ -25,8 +25,8 @@
 (menu-bar-mode 1)
 
 ;; Toolbar and scrollbars not so much.
-(tool-bar-mode nil)
-(scroll-bar-mode nil)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
 
 ;; Line numbers are overrated, jump-to-line is better
 (line-number-mode nil)
