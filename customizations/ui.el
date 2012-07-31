@@ -12,9 +12,8 @@
 ;; Highlight current
 (global-hl-line-mode 1)
 
- ;; Customizing background color
-;; TODO
-;;(set-face-background 'hl-line "#333")  ;; Emacs 22 Only
+ ;; Highlighted line.
+(set-face-background 'hl-line "#6B777C")
 
 (setq whitespace-style '(trailing space-before-tab indentation space-after-tab))
 (setq whitespace-line-column 80)
