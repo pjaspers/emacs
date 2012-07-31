@@ -30,9 +30,10 @@
 (setq backup-inhibited t)
 
 ;; Trying out [Smex](https://github.com/nonsequitur/smex/) as a better M-x
-  (setq smex-save-file (concat user-emacs-directory ".smex-items"))
-  (smex-initialize)
-  (global-set-key (kbd "M-x") 'smex)
+(require 'smex)
+(setq smex-save-file (concat user-emacs-directory ".smex-items"))
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
 
 ;; Better buffer swithing
 (require 'ido)
