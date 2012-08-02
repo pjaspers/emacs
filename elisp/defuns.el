@@ -48,6 +48,27 @@ by using nxml's indentation rules."
          (description (cdr (assoc 'description status-data))))
     (message "%s: %s" (capitalize mood) description)))
 
+(defun pjaspers-bundle-line-for-gem()
+  "Looks up a gem on rubygems and copies its latest version.
+
+Example for 'rails_admin':
+     gem 'rails_admin', '~> 0.0.5'
+
+Ready to be pasted in the Gemfile"
+  (interactive)
+  (require 'json)
+  (defvar url-http-end-of-headers)
+
+  (let* ((gem_name (read-string "Enter gem: "))
+         (json-data (save-excursion
+                      (set-buffer (url-retrieve-synchronously (concat "http://rubygems.org/api/v1/gems/" gem_name)))
+                      (goto-char url-http-end-of-headers)
+                      (json-read)))
+         (version (cdr (assoc 'version json-data)))
+         (bundle_string (concat "gem '" gem_name "', '~>" version "'")))
+    (kill-new bundle_string)
+    (message "%s" bundle_string)))
+
 (defun build-and-run()
   (interactive)
   (let ((root (textmate-project-root)))
