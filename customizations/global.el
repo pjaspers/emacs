@@ -42,3 +42,6 @@
 (add-to-list 'ido-ignore-files "\\.DS_Store")
 (setq ido-create-new-buffer 'always) ; always create a new buffer with Ido
 (setq ido-use-virtual-buffers t)
+
+(put 'ido-exit-minibuffer 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
