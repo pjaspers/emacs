@@ -1,6 +1,6 @@
 ## Introduction
 
-My current set of .emacs files.
+My current set of .emacs files, will only work for Emacs 24.
 
 Mainly used to edit:
 
