@@ -35,6 +35,9 @@
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
 
+;; Mainly used for the comment-uncomment function.
+(require 'textmate)
+
 ;; Better buffer swithing
 (require 'ido)
 (ido-mode t)
