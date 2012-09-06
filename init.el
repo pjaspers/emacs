@@ -1,7 +1,7 @@
 (add-to-list 'load-path "~/.emacs.d/")
 
-; custom place to save customizations
-(setq custom-file "~/.emacs.d/pjaspers/custom.el")
+;; custom place to save, wait for it, customizations
+(setq custom-file "~/.emacs.d/custom.el")
 (when (file-exists-p "custom.el") (load "custom"))
 
 
