@@ -2,3 +2,4 @@ elpa/
 eshell/
 .smex-items
 auto-save-list/
+custom.el
