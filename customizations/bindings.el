@@ -46,3 +46,6 @@
 
 ; vim emulation
 (global-set-key [C-tab] 'other-window)
+
+;; ace
+(global-set-key (kbd "C-c SPC") 'ace-jump-mode)
