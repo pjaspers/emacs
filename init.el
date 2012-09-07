@@ -12,4 +12,5 @@
 (load "customizations/modes")    ;; Setup mode specific stuff
 (load "customizations/shell")    ;; All things with paths and shells
 (load "customizations/global")	 ;; All things with paths and shells
+(load "customizations/org-mode") ;; Trying to get back in the org-mode habit.
 (load "elisp/defuns")            ;; Lisp helper functions
