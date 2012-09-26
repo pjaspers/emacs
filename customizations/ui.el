@@ -13,7 +13,7 @@
 (global-hl-line-mode 1)
 
  ;; Highlighted line.
-(set-face-background 'hl-line "#6B777C")
+(set-face-background 'hl-line "#2D3436")
 
 (setq whitespace-style '(trailing space-before-tab indentation space-after-tab))
 (setq whitespace-line-column 80)
@@ -34,4 +34,8 @@
 (setq next-line-add-newlines nil)
 
 ;; Theme
-(load-theme 'tango-dark)
+(require 'color-theme-gruber-darker)
+(color-theme-gruber-darker)
+
+;; Didn't play nice with magit, very nice otherwise
+;; (load-theme 'tango-dark)
