@@ -30,7 +30,6 @@
 ;; Setup textmate bindings right again.
 (global-set-key [(control \;)] 'comment-or-uncomment-region-or-line)
 (global-set-key [(meta t)] 'textmate-goto-file)
-(global-set-key [(meta t)] 'peepopen-goto-file-gui)
 (global-set-key [(meta shift t)] 'textmate-goto-symbol)
 
 ;; Putting replace in a handy place
@@ -55,3 +54,5 @@
 (global-set-key (kbd "C-.") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-,") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-.") 'mc/mark-all-like-this)
+
+(global-set-key (kbd "C-c y") 'browse-kill-ring)
