@@ -26,15 +26,29 @@
 (eval-after-load 'magit
   '(progn
      (setq magit-git-executable "/usr/local/bin/git")
-     (set-face-attribute 'magit-diff-add nil :foreground "#559944")
-     (set-face-attribute 'magit-diff-del nil :foreground "#de1923")
-     (set-face-attribute 'magit-diff-file-header nil :foreground "RoyalBlue1")
-     (set-face-attribute 'magit-diff-hunk-header nil :foreground "#fbde2d")
-     (set-face-attribute 'magit-item-highlight nil :background "black")))
+     ;; (set-face-attribute 'magit-diff-add nil :foreground "#559944")
+     ;; (set-face-attribute 'magit-diff-del nil :foreground "#de1923")
+     ;; (set-face-attribute 'magit-diff-file-header nil :foreground "RoyalBlue1")
+     ;; (set-face-attribute 'magit-diff-hunk-header nil :foreground "#fbde2d")
+     ;; (set-face-attribute 'magit-item-highlight nil :background "black")
+     (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
+     ))
 
-; rhtml
-(setq auto-mode-alist (cons '("\\.html\\.erb" . nxml-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.erb" . nxml-mode) auto-mode-alist))
+;; From [here](http://whattheemacsd.com/setup-magit.el-01.html)
+;; Full screen magit-status
+
+(defadvice magit-status (around magit-fullscreen activate)
+  (window-configuration-to-register :magit-fullscreen)
+  ad-do-it
+  (delete-other-windows))
+
+(defun magit-quit-session ()
+  "Restores the previous window configuration and kills the magit buffer"
+  (interactive)
+  (kill-buffer)
+  (jump-to-register :magit-fullscreen))
+
+
 
 ; ruby
 (setq auto-mode-alist (cons '("Rakefile" . ruby-mode) auto-mode-alist))
@@ -59,3 +73,10 @@
 
 ;; Whitespace cleanup
 (add-hook 'ruby-mode-hook (lambda () (whitespace-mode 1)))
+
+(require 'textmate)
+;; Trying out [helm](http://emacs-helm.github.com/helm/)
+;(global-set-key (kbd "C-c h") 'helm-mini)
+;(helm-mode 1)
+
+(require 'browse-kill-ring)
