@@ -42,3 +42,7 @@
 ;; (load-theme 'tango-dark)
 
 (load-theme 'zenburn t)
+
+;; Use sane fullscreen until Sea Lion fixes fullscreen apps.
+;; [Source](http://crypt.codemancers.com/posts/2013-07-05-non-native-fullscreen-for-osx-on-emacs-24-dot-3/)
+(setq ns-use-native-fullscreen nil)
