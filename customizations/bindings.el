@@ -57,3 +57,5 @@
 (global-set-key (kbd "C-c C-.") 'mc/mark-all-like-this)
 
 (global-set-key (kbd "C-c y") 'browse-kill-ring)
+;; Cool trick to show line numbers only when needed
+(global-set-key [remap goto-line] 'wted-goto-line-with-feedback)

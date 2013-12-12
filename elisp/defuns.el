@@ -169,3 +169,13 @@ Ready to be pasted in the Gemfile"
  (if (get-buffer new-name)
 	 (message "A buffer named '%s' already exists!" new-name)
 	(progn 	 (rename-file name new-name 1) 	 (rename-buffer new-name) 	 (set-visited-file-name new-name) 	 (set-buffer-modified-p nil)))))) ;;
+
+;; Taken from [here](http://whattheemacsd.com/key-bindings.el-01.html)
+(defun wted-goto-line-with-feedback ()
+  "Show line numbers temporarily, while prompting for the line number input"
+  (interactive)
+  (unwind-protect
+      (progn
+        (linum-mode 1)
+        (goto-line (read-number "Goto line: ")))
+    (linum-mode -1)))
