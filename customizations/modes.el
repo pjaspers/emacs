@@ -49,7 +49,11 @@
   (jump-to-register :magit-fullscreen))
 
 
-
+;; Web-mode
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . sass-mode))
 ; ruby
 (setq auto-mode-alist (cons '("Rakefile" . ruby-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("Capfile" . ruby-mode) auto-mode-alist))
@@ -58,6 +62,13 @@
 (setq auto-mode-alist (cons '("\\.ru" . ruby-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.gemspec" . ruby-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("Gemfile" . ruby-mode) auto-mode-alist))
+
+(setq auto-mode-alist (cons '("Gemfile" . ruby-mode) auto-mode-alist))
+
+;; Markdown
+(setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.mdown" . markdown-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
 
 ;; rhtml
 ;; Still not available in the packages repo
