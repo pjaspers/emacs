@@ -179,3 +179,12 @@ Ready to be pasted in the Gemfile"
         (linum-mode 1)
         (goto-line (read-number "Goto line: ")))
     (linum-mode -1)))
+
+(defun pjaspers-toggle-margins()
+  "Toggles between a buffer with margins that center it and one without any margins. Or at least tries to."
+  (interactive nil)
+  (princ left-margin-width)
+  (if (> (or (car (window-margins)) 0) 0)
+      (set-window-margins nil 0 0)
+    (let ((margin (/ (window-width) 5)))
+      (set-window-margins nil margin margin))))

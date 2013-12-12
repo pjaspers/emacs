@@ -57,5 +57,9 @@
 (global-set-key (kbd "C-c C-.") 'mc/mark-all-like-this)
 
 (global-set-key (kbd "C-c y") 'browse-kill-ring)
+
+;; Fullscreen shortcut
+(global-set-key [M-f1] 'pjaspers-toggle-margins)
+
 ;; Cool trick to show line numbers only when needed
 (global-set-key [remap goto-line] 'wted-goto-line-with-feedback)
