@@ -89,6 +89,23 @@ Ready to be pasted in the Gemfile"
     (kill-new total)
     (message "%s" total)))
 
+(defun pjaspers-pkg-line-for-npm()
+  "Looks up a package on npm and copies a the line ready to be pasted in the package.json"
+  (interactive)
+  (require 'json)
+  (defvar url-http-end-of-headers)
+
+  (let* ((gem_name (read-string "Enter package: "))
+         (json-data (save-excursion
+                      (set-buffer (url-retrieve-synchronously (concat "https://registry.npmjs.org/" gem_name)))
+                      (goto-char url-http-end-of-headers)
+                      (json-read)))
+         (name (cdr (assoc 'name json-data)))
+      (version (cdr (assoc 'latest (assoc 'dist-tags json-data))))
+      (pkg_line (format "\"%s\": \"%s\"" name version)))
+    (kill-new pkg_line)
+    (message "%s" pkg_line)))
+
 (defun build-and-run()
   (interactive)
   (let ((root (textmate-project-root)))

@@ -10,6 +10,7 @@
 (global-set-key "\C-xr" 'pjaspers-ido-find-gem)
 (global-set-key "\C-xt" 'pjaspers-i18n-this)
 (global-set-key "\C-x\C-g" 'pjaspers-bundle-line-for-gem)
+(global-set-key "\C-x\C-n" 'pjaspers-pkg-line-for-npm)
 
 ;; Steve Yegge · Effective Emacs ·
 ;; http://steve.yegge.googlepages.com/effective-emacs
