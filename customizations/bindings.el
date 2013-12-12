@@ -58,7 +58,7 @@
 
 (global-set-key (kbd "C-c y") 'browse-kill-ring)
 
-;; Fullscreen shortcut
+;; HIPSTER WRITER MODE.
 (global-set-key [M-f1] 'pjaspers-toggle-margins)
 
 ;; Cool trick to show line numbers only when needed
