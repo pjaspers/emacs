@@ -16,7 +16,7 @@
 ;; (set-face-background 'hl-line "#2D3436")
 ;; (set-face-background 'hl-line "#E5E5E5")
 
-(setq whitespace-style '(trailing space-before-tab indentation space-after-tab))
+(setq whitespace-style '(trailing space-before-tab tab tab-mark indentation space-after-tab))
 (setq whitespace-line-column 80)
 
 ;; Hide the chrome
