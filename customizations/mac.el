@@ -8,7 +8,7 @@
 (setq ns-pop-up-frames nil)
 
 ;; Fullscreen shortcut
-(global-set-key [f1] 'ns-toggle-fullscreen)
+(global-set-key [f1] 'toggle-frame-fullscreen)
 
 ;; Set alt to be meta, to be in line with terminal use.
 (setq mac-option-key-is-meta t)
