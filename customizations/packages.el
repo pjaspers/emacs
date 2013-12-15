@@ -26,9 +26,3 @@
 (add-to-list 'load-path "~/.emacs.d/ruby-dev.el" )
 (autoload 'turn-on-ruby-dev "ruby-dev" nil t)
 (add-hook 'ruby-mode-hook 'turn-on-ruby-dev)
-
-
-(add-to-list 'load-path "~/.emacs.d/jshint")
-(require 'flymake-jshint)
-(add-hook 'javascript-mode-hook
-     (lambda () (flymake-mode t)))
