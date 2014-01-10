@@ -22,6 +22,6 @@
 (setq org-agenda-files '("~/Dropbox/Documents/Personal/notes"))
 
 ;; MobileOrg
-(setq org-mobile-directory "~/Dropbox/MobileOrg")
-(setq org-mobile-directory "~/Dropbox/Apps/MobileOrgBeta/")
+(setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
+;; (setq org-mobile-directory "~/Dropbox/Apps/MobileOrgBeta/")
 (setq org-mobile-inbox-for-pull "~/Dropbox/Documents/Personal/notes/from-mobile.org")
