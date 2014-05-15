@@ -8,7 +8,14 @@
 ;; Explictly setting it here (So shell-command and buddies can use it)
 (setq path "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/sbin:/AdobeAIRSDK/bin:/usr/local/share/npm/bin:/usr/local/texlive/2011basic/bin/universal-darwin/")
 
-(setenv "PATH" path)
+;; (setenv "PATH" path)
+
+(let ((path (shell-command-to-string "source ~/.zshrc; echo -n $PATH")))
+  (setenv "PATH" path)
+  (setq exec-path
+        (append
+         (split-string-and-unquote path ":")
+         exec-path)))
 
 ; can't write over prompt, that would be weird
 (setq comint-prompt-read-only)
