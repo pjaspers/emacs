@@ -8,6 +8,16 @@
 (replace-regexp-in-string "{" "\n{" (replace-regexp-in-string "\"" "" (replace-regexp-in-string "\"," "\n" (url-unhex-string string))))
 )
 
+(defun pjaspers-bookmarklet-region (begin end)
+  "Takes the region, strips whitespace and urlencodes so it can be used as a bookmarklet DOES NOT WORK YET"
+  (interactive "r")
+  (let* ((s (buffer-substring-no-properties begin end))
+         (sim (replace-regexp-in-string "\s\\|\t\\|\n" "" s))
+         (complete (format "javascript:(function (){%s})()" sim))
+        )
+    (kill-new complete))
+  )
+
 ;; From http://stackoverflow.com/questions/12492/pretty-printing-xml-files-on-emacs
 (defun pretty-print-xml-region (begin end)
   "Pretty format XML markup in region. You need to have nxml-mode
@@ -103,6 +113,23 @@ Ready to be pasted in the Gemfile"
          (name (cdr (assoc 'name json-data)))
       (version (cdr (assoc 'latest (assoc 'dist-tags json-data))))
       (pkg_line (format "\"%s\": \"%s\"" name version)))
+    (kill-new pkg_line)
+    (message "%s" pkg_line)))
+
+(defun pjaspers-pkg-line-for-cocoapods()
+  "Looks up a package on npm and copies a the line ready to be pasted in the package.json"
+  (interactive)
+  (require 'json)
+  (defvar url-http-end-of-headers)
+
+  (let* ((gem_name (read-string "Enter package: "))
+         (json-data (save-excursion
+                      (set-buffer (url-retrieve-synchronously (concat "http://search.cocoapods.org/api/v1/pods.flat.hash.json?query=" gem_name)))
+                      (goto-char url-http-end-of-headers)
+                      (json-read)))
+         (name (cdr (assoc 'id json-data)))
+      (version (cdr (assoc 'version json-data))))
+      (pkg_line (format "\"%s\": \"%s\"" name version))
     (kill-new pkg_line)
     (message "%s" pkg_line)))
 
