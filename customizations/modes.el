@@ -70,11 +70,6 @@
 (setq auto-mode-alist (cons '("\\.mdown" . markdown-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
 
-;; rhtml
-;; Still not available in the packages repo
-(add-to-list 'load-path "~/.emacs.d/vendor/rhtml")
-(require 'rhtml-mode)
-
 ;; Making inf-ruby work with pry
 (require 'inf-ruby)
 (add-to-list 'inf-ruby-implementations '("pry" . "pry"))
