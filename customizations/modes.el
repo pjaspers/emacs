@@ -31,23 +31,7 @@
      ;; (set-face-attribute 'magit-diff-file-header nil :foreground "RoyalBlue1")
      ;; (set-face-attribute 'magit-diff-hunk-header nil :foreground "#fbde2d")
      ;; (set-face-attribute 'magit-item-highlight nil :background "black")
-     (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
      ))
-
-;; From [here](http://whattheemacsd.com/setup-magit.el-01.html)
-;; Full screen magit-status
-
-(defadvice magit-status (around magit-fullscreen activate)
-  (window-configuration-to-register :magit-fullscreen)
-  ad-do-it
-  (delete-other-windows))
-
-(defun magit-quit-session ()
-  "Restores the previous window configuration and kills the magit buffer"
-  (interactive)
-  (kill-buffer)
-  (jump-to-register :magit-fullscreen))
-
 
 ;; Web-mode
 (require 'web-mode)
