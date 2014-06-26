@@ -12,9 +12,10 @@
 (setq git-packages '(magit mo-git-blame git-commit-mode gitconfig-mode gitignore-mode))
 (setq text-packages '(markdown-mode))
 (setq lisp-packages '())
-(setq global-packages '(smex textmate ace-jump-mode color-theme-gruber-darker multiple-cursors zenburn-theme browse-kill-ring auto-complete))
+(setq color-themes '(color-theme-sanityinc-tomorrow color-theme-gruber-darker))
+(setq global-packages '(smex textmate ace-jump-mode multiple-cursors zenburn-theme browse-kill-ring auto-complete projectile))
 
-(setq pjaspers-packages (append ruby-packages js-packages git-packages text-packages lisp-packages global-packages))
+(setq pjaspers-packages (append ruby-packages js-packages git-packages text-packages lisp-packages global-packages color-themes))
 
 (dolist (p pjaspers-packages)
   (when (not (package-installed-p p))
