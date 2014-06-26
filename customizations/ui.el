@@ -51,18 +51,6 @@
 
 (setq ns-use-srgb-colorspace t)
 
-;; http://stackoverflow.com/questions/9248996/how-to-toggle-fullscreen-with-emacs-as-default
-(defun switch-fullscreen nil
-  (interactive)
-  (let* ((modes '(nil fullboth fullwidth fullheight))
-         (cm (cdr (assoc 'fullscreen (frame-parameters) ) ) )
-         (next (cadr (member cm modes) ) ) )
-    (modify-frame-parameters
-     (selected-frame)
-     (list (cons 'fullscreen next)))))
-
-(define-key global-map [f1] 'switch-fullscreen)
-
 ;; See http://bzg.fr/emacs-hide-mode-line.html
 (defvar-local hidden-mode-line-mode nil)
 (defvar-local hide-mode-line nil)
