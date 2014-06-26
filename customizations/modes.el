@@ -1,6 +1,14 @@
 ;; all modes
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; flx-ido
+(require 'flx-ido)
+(ido-mode 1)
+(ido-everywhere 1)
+(flx-ido-mode 1)
+;; disable ido faces to see flx highlights.
+(setq ido-use-faces nil)
+
 ;; bash
 (setq auto-mode-alist (cons '("\\.bashrc" . sh-mode) auto-mode-alist))
 
@@ -35,6 +43,7 @@
 
 ;; Web-mode
 (require 'web-mode)
+(require 'projectile)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . sass-mode))
@@ -48,6 +57,7 @@
 (setq auto-mode-alist (cons '("Gemfile" . ruby-mode) auto-mode-alist))
 
 (setq auto-mode-alist (cons '("Gemfile" . ruby-mode) auto-mode-alist))
+(add-hook 'ruby-mode-hook 'projectile-on)
 
 ;; Markdown
 (setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
