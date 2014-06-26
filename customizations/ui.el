@@ -1,12 +1,13 @@
 ;; Make it 2.0-y
 
 ;; Current Font
-;; Use (pp (current-frame-configuration)) to find it
-(set-frame-font "-apple-DejaVu_Sans_Mono-medium-normal-normal-*-16-*-*-*-m-0-iso10646-")
+;; Use (pp (current-frame-configuration)) to find it.
+(set-frame-font "-*-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
+
 ;; This makes sure new frames start with the correct font size
 ;; (Although I don't use a lot of frames)
 (custom-set-faces
- '(default ((t (:height 160 :family "DejaVu_Sans_Mono")))))
+ '(default ((t (:height 160 :family "DejaVu Sans Mono")))))
 
 ;; default font
 (set-face-attribute 'default nil :family "DejaVu Sans Mono")
