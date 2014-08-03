@@ -22,15 +22,15 @@
 (global-set-key "\C-x\C-k" 'kill-region)
 (global-set-key "\C-c\C-k" 'kill-region)
 
-;; Grep is pretty heavily used.
-(global-set-key [f2] 'rgrep)
+;; Trying out ag
+(global-set-key [f2] 'ag-project)
 
 ;; Trying out a handy binding for feature branches
 (global-set-key "\C-c\C-n" 'magit-create-branch)
 
 ;; Setup textmate bindings right again.
 (global-set-key [(control \;)] 'comment-or-uncomment-region-or-line)
-(global-set-key [(meta t)] 'textmate-goto-file)
+(global-set-key [(meta t)] 'projectile-find-file)
 (global-set-key [(meta shift t)] 'textmate-goto-symbol)
 
 ;; Putting replace in a handy place

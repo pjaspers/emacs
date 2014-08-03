@@ -30,6 +30,9 @@
 	  '(lambda ()
 	     (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
 
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
+
 ;; Magit
 (eval-after-load 'magit
   '(progn
@@ -59,6 +62,11 @@
 (setq auto-mode-alist (cons '("Gemfile" . ruby-mode) auto-mode-alist))
 (add-hook 'ruby-mode-hook 'projectile-on)
 
+(require 'chruby)
+;; Default ruby
+(chruby "ruby-2.0.0-p247")
+(chruby "ruby-2.1.1")
+(require 'rubocop)
 ;; Markdown
 (setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.mdown" . markdown-mode) auto-mode-alist))
@@ -80,3 +88,5 @@
 ;(helm-mode 1)
 
 (require 'browse-kill-ring)
+
+(require 'ag)

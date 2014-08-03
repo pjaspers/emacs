@@ -7,13 +7,13 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(setq ruby-packages '(rvm inf-ruby yaml-mode sass-mode robe web-mode))
+(setq ruby-packages '(chruby inf-ruby yaml-mode sass-mode robe web-mode rubocop))
 (setq js-packages '(js2-mode coffee-mode))
 (setq git-packages '(magit mo-git-blame git-commit-mode gitconfig-mode gitignore-mode))
 (setq text-packages '(markdown-mode))
 (setq lisp-packages '())
 (setq color-themes '(color-theme-sanityinc-tomorrow color-theme-gruber-darker))
-(setq global-packages '(smex textmate ace-jump-mode multiple-cursors zenburn-theme browse-kill-ring auto-complete projectile flx-ido))
+(setq global-packages '(smex textmate ace-jump-mode multiple-cursors zenburn-theme browse-kill-ring auto-complete projectile flx-ido flycheck expand-region exec-path-from-shell swift-mode ag))
 
 (setq pjaspers-packages (append ruby-packages js-packages git-packages text-packages lisp-packages global-packages color-themes))
 

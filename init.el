@@ -1,7 +1,7 @@
 ;; custom place to save, wait for it, customizations
 (setq custom-file "~/.emacs.d/custom.el")
 (when (file-exists-p "custom.el") (load "custom"))
-
+(require 'cl)
 (add-to-list 'load-path "~/.emacs.d/customizations")
 (load "packages") ;; Fetch modes
 (load "ui")       ;; Set up all things colors/fonts/appearance
