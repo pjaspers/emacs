@@ -23,7 +23,7 @@
 (global-set-key "\C-c\C-k" 'kill-region)
 
 ;; Trying out ag
-(global-set-key [f2] 'ag-project)
+(global-set-key [f2] 'ag-files)
 
 ;; Trying out a handy binding for feature branches
 (global-set-key "\C-c\C-n" 'magit-create-branch)
