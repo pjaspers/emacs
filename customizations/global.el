@@ -60,3 +60,8 @@
        (interactive)
        (save-buffer)
        (server-edit)))))
+
+;; Setup a fill column indicator at 80
+(setq-default fill-column 80)
+(define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
+(global-fci-mode 1)
