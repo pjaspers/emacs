@@ -63,8 +63,3 @@
 
 ;; Can't think of a single time this has helped me.
 (setq make-backup-files nil)
-
-;; Setup a fill column indicator at 80
-(setq-default fill-column 80)
-(define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
-(global-fci-mode 1)
