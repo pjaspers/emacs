@@ -1,65 +1,65 @@
-; general
+;; All my custom keybindings in one minor mode
+;;
+;; Idea from [here](http://stackoverflow.com/questions/683425/globally-override-key-binding-in-emacs), now all my bindings are contained
+;; to a single minor mode. Which is nice.
+
+(defvar pj-bindings-map (make-keymap)
+  "A keymap for custom bindings.")
+
 ;; ibuffer is a better buffer manager
-(global-set-key (kbd "C-x C-b") 'ibuffer)
+(define-key pj-bindings-map (kbd "C-x C-b")  'ibuffer)
+(define-key pj-bindings-map (kbd "C-x g") 'magit-status)
+(define-key pj-bindings-map (kbd "M-a") 'align-to-equals)
 
-(global-set-key "\C-xg" 'magit-status)
+(define-key pj-bindings-map (kbd "C-x p") 'pjaspers-ido-find-project)
+(define-key pj-bindings-map (kbd "C-x r") 'pjaspers-ido-find-gem)
+(define-key pj-bindings-map (kbd "C-x t") 'pjaspers-i18n-this)
+(define-key pj-bindings-map (kbd "C-x C-g") 'pjaspers-bundle-line-for-gem)
+(define-key pj-bindings-map (kbd "C-x C-n") 'pjaspers-pkg-line-for-npm)
 
-(global-set-key "\M-a" 'align-to-equals)
-
-(global-set-key "\C-xp" 'pjaspers-ido-find-project)
-(global-set-key "\C-xr" 'pjaspers-ido-find-gem)
-(global-set-key "\C-xt" 'pjaspers-i18n-this)
-(global-set-key "\C-x\C-g" 'pjaspers-bundle-line-for-gem)
-(global-set-key "\C-x\C-n" 'pjaspers-pkg-line-for-npm)
-
-;; Steve Yegge · Effective Emacs ·
+;; Make it easier to hit M-x
 ;; http://steve.yegge.googlepages.com/effective-emacs
-(global-set-key "\C-x\C-m" 'smex)
-(global-set-key "\C-c\C-m" 'smex)
+(define-key pj-bindings-map (kbd "C-x C-m") 'smex)
+(define-key pj-bindings-map (kbd "C-c C-m") 'smex)
 
 ;; Prefer backward-kill-word over backspace
-(global-set-key "\C-w" 'backward-kill-word)
-(global-set-key "\C-x\C-k" 'kill-region)
-(global-set-key "\C-c\C-k" 'kill-region)
+(define-key pj-bindings-map (kbd "C-w") 'backward-kill-word)
+(define-key pj-bindings-map (kbd "C-x C-k") 'kill-region)
+(define-key pj-bindings-map (kbd "C-c C-k") 'kill-region)
 
-;; Trying out ag
-(global-set-key [f2] 'ag-files)
-
-;; Trying out a handy binding for feature branches
-(global-set-key "\C-c\C-n" 'magit-create-branch)
+;; Use ag to search for things
+(define-key pj-bindings-map (kbd "<f2>") 'ag)
 
 ;; Setup textmate bindings right again.
-(global-set-key [(control \;)] 'comment-or-uncomment-region-or-line)
-(global-set-key [(meta t)] 'projectile-find-file)
-(global-set-key [(meta shift t)] 'textmate-goto-symbol)
+(define-key pj-bindings-map (kbd "C-\\") 'comment-or-uncomment-region-or-line)
+(define-key pj-bindings-map (kbd "M-t") 'projectile-find-file)
+(define-key pj-bindings-map (kbd "M-S-t") 'textmate-goto-symbol)
 
 ;; Putting replace in a handy place
-(global-set-key (kbd "\C-r") 'replace-regexp)
+(define-key pj-bindings-map (kbd "C-r") 'replace-regexp)
 
 ;; Use regex searches by default.
-(global-set-key (kbd "C-s") 'isearch-forward-regexp)
-(global-set-key (kbd "C-M-s") 'isearch-forward)
-(global-set-key (kbd "C-M-r") 'isearch-backward)
-
-;; Start eshell or switch to it if it's active.
-(global-set-key (kbd "C-x m") 'eshell)
-
-; vim emulation
-(global-set-key [C-tab] 'other-window)
+(define-key pj-bindings-map (kbd "C-s") 'isearch-forward-regexp)
+(define-key pj-bindings-map (kbd "C-M-s") 'isearch-forward)
+(define-key pj-bindings-map (kbd "C-M-r") 'isearch-backward)
 
 ;; ace
-(global-set-key (kbd "C-c SPC") 'ace-jump-mode)
+(define-key pj-bindings-map (kbd "C-c SPC") 'ace-jump-mode)
 
 ;; Multiple cursors
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C-.") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-,") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-.") 'mc/mark-all-like-this)
+(define-key pj-bindings-map (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(define-key pj-bindings-map (kbd "C-.") 'mc/mark-next-like-this)
+(define-key pj-bindings-map (kbd "C-,") 'mc/mark-previous-like-this)
+(define-key pj-bindings-map (kbd "C-c C-.") 'mc/mark-all-like-this)
 
-(global-set-key (kbd "C-c y") 'browse-kill-ring)
+(define-key pj-bindings-map (kbd "C-c y") 'browse-kill-ring)
 
 ;; HIPSTER WRITER MODE.
-(global-set-key [M-f1] 'pjaspers-toggle-margins)
+(define-key pj-bindings-map (kbd "M-<f1>") 'pjaspers-toggle-margins)
 
 ;; Cool trick to show line numbers only when needed
-(global-set-key [remap goto-line] 'wted-goto-line-with-feedback)
+(define-key pj-bindings-map [remap goto-line] 'wted-goto-line-with-feedback)
+
+(define-minor-mode pj-bindings-mode
+  "A mode that activates my custom bindings."
+  t nil pj-bindings-map)
