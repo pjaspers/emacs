@@ -78,7 +78,7 @@
              "Use M-x hidden-mode-line-mode to make the mode-line appear."))))
 
 ;; Activate hidden-mode-line-mode
-(hidden-mode-line-mode 1)
+;; (hidden-mode-line-mode 1)
 
 ;; If you want to hide the mode-line in all new buffers
 ;; (add-hook 'after-change-major-mode-hook 'hidden-mode-line-mode)
