@@ -60,13 +60,13 @@
 (setq auto-mode-alist (cons '("Gemfile" . ruby-mode) auto-mode-alist))
 
 (setq auto-mode-alist (cons '("Gemfile" . ruby-mode) auto-mode-alist))
-(add-hook 'ruby-mode-hook 'projectile-on)
 
 (require 'chruby)
 ;; Default ruby
 (chruby "ruby-2.0.0-p247")
 (chruby "ruby-2.1.1")
 (require 'rubocop)
+
 ;; Markdown
 (setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.mdown" . markdown-mode) auto-mode-alist))
@@ -79,8 +79,14 @@
 (setq inf-ruby-first-prompt-pattern "^\\[[0-9]+\\] pry\\((.*)\\)> *")
 (setq inf-ruby-prompt-pattern "^\\[[0-9]+\\] pry\\((.*)\\)[>*\"'] *")
 
+(defun pj-ruby-mode-hook()
+  (whitespace-mode 1)
+  (projectile-mode 1)
+  (local-set-key [M-t] 'projectile-find-file))
+
 ;; Whitespace cleanup
-(add-hook 'ruby-mode-hook (lambda () (whitespace-mode 1)))
+(add-hook 'ruby-mode-hook 'pj-ruby-mode-hook)
+
 
 (require 'textmate)
 ;; Trying out [helm](http://emacs-helm.github.com/helm/)
