@@ -94,7 +94,7 @@ Ready to be pasted in the Gemfile"
                (format "# %s" (truncate-string-to-width s 72 nil nil t))) (chomp (cdr (assoc 'info json-data)))))
 
       (homepage (format "# [%s](%s)" name url))
-      (bundle_line (format "gem '%s', '~> %s'" name version))
+      (bundle_line (format "gem \"%s\", \"~> %s\"" name version))
       (total (format "%s\n%s\n%s" desc homepage bundle_line)))
     (kill-new total)
     (message "%s" total)))
