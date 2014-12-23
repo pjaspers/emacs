@@ -215,3 +215,14 @@ Ready to be pasted in the Gemfile"
       (set-window-margins nil 0 0)
     (let ((margin (/ (window-width) 5)))
       (set-window-margins nil margin margin))))
+
+(defun pjaspers-emoji-me()
+  "Takes a word and show in a temporary buffer all emoji matching that"
+  (interactive)
+  (let* ((wildcard-name (read-regexp "Enter regexp to look for: "))
+         (all-known (ucs-names))
+         (buffer-name (format "*emoji-me-%s*" wildcard-name))
+         (results (remove-if-not (lambda(x) (let ((str (car x)))(string-match wildcard-name str))) all-known)))
+    (with-output-to-temp-buffer buffer-name
+      (print (mapconcat (function (lambda(x) (format "%s - %s" (car x) (char-to-string (cdr x))))) results "\n"))
+      (switch-to-buffer buffer-name))))
