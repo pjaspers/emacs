@@ -63,3 +63,6 @@
 
 ;; Can't think of a single time this has helped me.
 (setq make-backup-files nil)
+
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
