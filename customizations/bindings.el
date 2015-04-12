@@ -12,6 +12,7 @@
 (define-key pj-bindings-map (kbd "M-a") 'align-to-equals)
 
 (define-key pj-bindings-map (kbd "C-x p") 'pjaspers-ido-find-project)
+(define-key pj-bindings-map (kbd "<f5>") 'pjaspers-open-notes-file)
 (define-key pj-bindings-map (kbd "C-x r") 'pjaspers-ido-find-gem)
 (define-key pj-bindings-map (kbd "C-x t") 'pjaspers-i18n-this)
 (define-key pj-bindings-map (kbd "C-x C-g") 'pjaspers-bundle-line-for-gem)
@@ -32,7 +33,7 @@
 (define-key pj-bindings-map (kbd "<f2>") 'ag)
 
 ;; Setup textmate bindings right again.
-(define-key pj-bindings-map (kbd "C-\\") 'comment-or-uncomment-region-or-line)
+(define-key pj-bindings-map (kbd "C-;") 'comment-or-uncomment-region-or-line)
 (define-key pj-bindings-map (kbd "M-t") 'projectile-find-file)
 (define-key pj-bindings-map (kbd "M-S-t") 'textmate-goto-symbol)
 

@@ -226,3 +226,8 @@ Ready to be pasted in the Gemfile"
     (with-output-to-temp-buffer buffer-name
       (print (mapconcat (function (lambda(x) (format "%s - %s" (car x) (char-to-string (cdr x))))) results "\n"))
       (switch-to-buffer buffer-name))))
+
+(defun pjaspers-open-notes-file ()
+  "Opens the default capture file for org-mode"
+  (interactive)
+  (find-file org-default-notes-file))
