@@ -1,15 +1,23 @@
 (setq org-directory "~/Dropbox/Documents/Personal/notes")
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline org-default-notes-file "Tasks")
+             "* TODO %?\n  %T\n%i\n  %a")
+        ("n" "Note" entry (file+headline org-default-notes-file "Notes")
+             "* %?\nEntered on %U\n  %i\n  %a")
+        ("q" "Quote" entry (file+headline org-default-notes-file "Notes")
+         "* %^{author} - %^{quote}")))
+
 (define-key global-map "\C-cc" 'org-capture)
 (define-key global-map "\C-ca" 'org-agenda)
 
 
-(setq org-refile-targets '((nil :maxlevel . 2)
+(setq org-refile-targets '((nil :maxlevel . 4)
                                 ; all top-level headlines in the
                                 ; current buffer are used (first) as a
                                 ; refile target
-                           (org-agenda-files :maxlevel . 2)))
+                           (org-agenda-files :maxlevel . 4)))
 
 ;; provide refile targets as paths, including the file name
 ;; (without directory) as level 1 of the path
