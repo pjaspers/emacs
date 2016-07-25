@@ -21,8 +21,8 @@
 
 ;; Make it easier to hit M-x
 ;; http://steve.yegge.googlepages.com/effective-emacs
-(define-key pj-bindings-map (kbd "C-x C-m") 'smex)
-(define-key pj-bindings-map (kbd "C-c C-m") 'smex)
+(define-key pj-bindings-map (kbd "C-x C-m") 'execute-extended-command)
+(define-key pj-bindings-map (kbd "C-c C-m") 'execute-extended-command)
 
 ;; Prefer backward-kill-word over backspace
 (define-key pj-bindings-map (kbd "C-w") 'backward-kill-word)
@@ -32,10 +32,9 @@
 ;; Use ag to search for things
 (define-key pj-bindings-map (kbd "<f2>") 'ag)
 
-;; Setup textmate bindings right again.
-(define-key pj-bindings-map (kbd "C-;") 'comment-or-uncomment-region-or-line)
+;; Setup textmate-ish bindings right again.
+(define-key pj-bindings-map (kbd "C-;") 'comment-line)
 (define-key pj-bindings-map (kbd "M-t") 'projectile-find-file)
-(define-key pj-bindings-map (kbd "M-S-t") 'textmate-goto-symbol)
 
 ;; Putting replace in a handy place
 (define-key pj-bindings-map (kbd "C-r") 'replace-regexp)
