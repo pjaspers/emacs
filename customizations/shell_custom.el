@@ -11,7 +11,7 @@
   (exec-path-from-shell-initialize))
 
 ; can't write over prompt, that would be weird
-(setq comint-prompt-read-only)
+(setq comint-prompt-read-only t)
 
 ; colorful shell
 (require 'ansi-color)
