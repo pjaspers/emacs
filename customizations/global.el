@@ -29,12 +29,6 @@
 ; disable backup files (foo~)
 (setq backup-inhibited t)
 
-;; Trying out [Smex](https://github.com/nonsequitur/smex/) as a better M-x
-(require 'smex)
-(setq smex-save-file (concat user-emacs-directory ".smex-items"))
-(smex-initialize)
-(global-set-key (kbd "M-x") 'smex)
-
 ;; Mainly used for the comment-uncomment function.
 (require 'textmate)
 
