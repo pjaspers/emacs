@@ -40,7 +40,7 @@
 (define-key pj-bindings-map (kbd "C-r") 'replace-regexp)
 
 ;; Use regex searches by default.
-(define-key pj-bindings-map (kbd "C-s") 'isearch-forward-regexp)
+;; (define-key pj-bindings-map (kbd "C-s") 'isearch-forward-regexp)
 (define-key pj-bindings-map (kbd "C-M-s") 'isearch-forward)
 (define-key pj-bindings-map (kbd "C-M-r") 'isearch-backward)
 
