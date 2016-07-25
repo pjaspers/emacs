@@ -43,6 +43,15 @@
 (put 'ido-exit-minibuffer 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 
+;; (define-key ido-completion-map [C-s] 'ido-next-history-element)
+;; This tab override shouldn't be necessary given ido's default
+;; configuration, but minibuffer-complete otherwise dominates the
+;; tab binding because of my custom tab-completion-everywhere
+;; configuration.
+(add-hook 'ido-setup-hook
+          (lambda ()
+            (define-key ido-completion-map [C-s] 'ido-next-history-element)))
+
 ;; Yes, you can do this same trick with the cool "It's All Text" firefox add-on :-)
 (add-to-list 'auto-mode-alist '("/mutt-\\|itsalltext.*mail\\.google" . mail-mode))
 (add-hook 'mail-mode-hook 'turn-on-auto-fill)
