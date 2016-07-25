@@ -15,6 +15,8 @@
 (depends-on "js3-mode")
 (depends-on "coffee-mode")
 
+(depends-on "elm-mode")
+
 ;; Git packages
 (depends-on "magit")
 (depends-on "mo-git-blame")
@@ -23,10 +25,8 @@
 (depends-on "gitignore-mode")
 
 ;; Global packages
-(depends-on "smex")
-(depends-on "textmate")
-(depends-on "ace-jump-mode")
-(depends-on "multiple-cursors")
+(depends-on "anzu")
+(depends-on "text")
 (depends-on "zenburn-theme")
 (depends-on "browse-kill-ring")
 (depends-on "auto-complete")
@@ -39,6 +39,7 @@
 (depends-on "ag")
 (depends-on "fill-column-indicator")
 
+(depends-on "graphviz-dot-mode")
 ;; Color themes
 (depends-on "color-theme-sanityinc-tomorrow")
 
@@ -56,3 +57,4 @@
 (depends-on "smartparens")
 (depends-on "use-package")
 (depends-on "yasnippet")
+(depends-on "emmet-mode")
