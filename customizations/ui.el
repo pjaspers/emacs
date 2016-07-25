@@ -41,7 +41,7 @@
 
 ;; Theme
 (setq custom-safe-themes t)
-(load-theme 'sanityinc-tomorrow-eighties)
+(load-theme 'leuven)
 
 ;; (setq custom-enabled-themes 'sanityinc-tomorrow-eighties)
 
