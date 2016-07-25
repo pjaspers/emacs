@@ -25,8 +25,6 @@
 (depends-on "gitignore-mode")
 
 ;; Global packages
-(depends-on "anzu")
-(depends-on "text")
 (depends-on "zenburn-theme")
 (depends-on "browse-kill-ring")
 (depends-on "auto-complete")
