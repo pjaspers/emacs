@@ -81,7 +81,7 @@ Ready to be pasted in the Gemfile"
 
   (let* ((gem_name (read-string "Enter gem: "))
          (json-data (save-excursion
-                      (set-buffer (url-retrieve-synchronously (concat "http://rubygems.org/api/v1/gems/" gem_name)))
+                      (set-buffer (url-retrieve-synchronously (concat "https://rubygems.org/api/v1/gems/" gem_name)))
                       (goto-char url-http-end-of-headers)
                       (json-read)))
 
