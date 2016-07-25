@@ -1,4 +1,5 @@
 elpa/
+.cask/
 eshell/
 .smex-items
 auto-save-list/
@@ -8,3 +9,4 @@ var
 projectile-bookmarks.eld
 bookmarks
 .org-id-locations
+smex-items
