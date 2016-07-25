@@ -94,5 +94,5 @@
 ;(helm-mode 1)
 
 (require 'browse-kill-ring)
-
+(require 'graphviz-dot-mode)
 (require 'ag)
