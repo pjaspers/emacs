@@ -231,3 +231,9 @@ Ready to be pasted in the Gemfile"
   "Opens the default capture file for org-mode"
   (interactive)
   (find-file org-default-notes-file))
+
+(defun pj-show-vcard-image(begin end)
+  "Select the photo part from a vcard and this will show it"
+  (interactive "r")
+  (let ((data (base64-decode-region begin end)))
+    (insert-image (create-image data nil t))))
