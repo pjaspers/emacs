@@ -25,6 +25,9 @@
 (depends-on "gitignore-mode")
 
 ;; Global packages
+;; (depends-on "smex")
+(depends-on "smex" :git "https://github.com/Wilfred/smex" :branch "show-keybindings")
+
 (depends-on "zenburn-theme")
 (depends-on "browse-kill-ring")
 (depends-on "auto-complete")
