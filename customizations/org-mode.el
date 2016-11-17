@@ -7,7 +7,10 @@
         ("n" "Note" entry (file+headline org-default-notes-file "Notes")
              "* %?\nEntered on %U\n  %i\n  %a")
         ("q" "Quote" entry (file+headline org-default-notes-file "Notes")
-         "* %^{author} - %^{quote}")))
+         "* %^{author} - %^{quote}")
+        ("m" "Meeting" entry (file+headline org-default-notes-file "Notes")
+             "* Meeting: %?\nEntered on %U\nAttendees:\nSummary:\nTodos:\n  %i\n  %a")))
+
 
 (define-key global-map "\C-cc" 'org-capture)
 (define-key global-map "\C-ca" 'org-agenda)
