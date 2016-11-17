@@ -147,12 +147,6 @@ Ready to be pasted in the Gemfile"
              (concat (expand-file-name root) "TouchPoint.xcodeproj")
              (concat (expand-file-name root) "build/Debug-iphonesimulator/TouchPoint.app")))))
 
-(defun pjaspers-ido-find-gem()
-  (interactive)
-  (find-file
-   (concat "~/.rvm/gems/ruby-1.9.3-p194/gems/" (ido-completing-read "Gem: "
-                           (directory-files "~/.rvm/gems/ruby-1.9.3-p194/gems/" nil "^[^.]")))))
-
 (defun pjaspers-ido-find-project()
   "List projects"
   (interactive)

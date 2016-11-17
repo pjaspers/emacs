@@ -13,7 +13,6 @@
 
 (define-key pj-bindings-map (kbd "C-x p") 'pjaspers-ido-find-project)
 (define-key pj-bindings-map (kbd "<f5>") 'pjaspers-open-notes-file)
-(define-key pj-bindings-map (kbd "C-x r") 'pjaspers-ido-find-gem)
 (define-key pj-bindings-map (kbd "C-x t") 'pjaspers-i18n-this)
 (define-key pj-bindings-map (kbd "C-x C-g") 'pjaspers-bundle-line-for-gem)
 (define-key pj-bindings-map (kbd "C-x C-n") 'pjaspers-pkg-line-for-npm)
