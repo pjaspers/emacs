@@ -29,9 +29,6 @@
 ; disable backup files (foo~)
 (setq backup-inhibited t)
 
-;; Mainly used for the comment-uncomment function.
-(require 'textmate)
-
 ;; Better buffer swithing
 (require 'ido)
 (ido-mode t)
