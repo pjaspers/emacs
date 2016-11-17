@@ -17,6 +17,7 @@
 (define-key pj-bindings-map (kbd "C-x t") 'pjaspers-i18n-this)
 (define-key pj-bindings-map (kbd "C-x C-g") 'pjaspers-bundle-line-for-gem)
 (define-key pj-bindings-map (kbd "C-x C-n") 'pjaspers-pkg-line-for-npm)
+(define-key pj-bindings-map (kbd "C-x C-r") 'pjaspers-reveal-in-finder)
 (define-key pj-bindings-map (kbd "C-x 9") 'pjaspers-emoji-me)
 
 ;; Make it easier to hit M-x

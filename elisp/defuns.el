@@ -154,10 +154,10 @@ Ready to be pasted in the Gemfile"
                            (directory-files "~/.rvm/gems/ruby-1.9.3-p194/gems/" nil "^[^.]")))))
 
 (defun pjaspers-ido-find-project()
+  "List projects"
   (interactive)
   (let ((projects (pjaspers-find-projects-in-subdirectory "~/development")))
-    (find-file (cdr (assoc (ido-completing-read "Project: " (mapcar #'car projects)
-) projects)))))
+    (find-file (cdr (assoc (ido-completing-read "Project: " (mapcar #'car projects))  projects)))))
 
 (defun pjaspers-find-projects-in-subdirectory(directory)
   (setq projects nil)
@@ -169,12 +169,14 @@ Ready to be pasted in the Gemfile"
     (nreverse projects))
 
 (defun pjaspers-goto-config ()
+  "Open my config"
   (interactive)
   (find-file "~/.emacs.d/pjaspers.el"))
 
 ; Searches backwards for a < kills everything upto a <, and will enter erb translation thingies
 ; Leaving you free to type the key while the kill ring has the text to be entered in the yaml
 (defun pjaspers-i18n-this()
+  "Searches backwards for a < kills everything upto a <, and will enter erb translation thingies"
   (interactive)
    (re-search-backward "\>")
    (forward-char 1)
@@ -237,3 +239,8 @@ Ready to be pasted in the Gemfile"
   (interactive "r")
   (let ((data (base64-decode-region begin end)))
     (insert-image (create-image data nil t))))
+
+(defun pjaspers-reveal-in-finder ()
+  "Show the current directory in the Finder"
+  (interactive)
+  (shell-command "open ."))
