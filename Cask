@@ -1,6 +1,8 @@
 (source gnu)
 (source melpa)
 
+(depends-on "pallet")
+
 ;; Ruby packages
 (depends-on "chruby")
 (depends-on "inf-ruby")
@@ -20,7 +22,6 @@
 ;; Git packages
 (depends-on "magit")
 (depends-on "mo-git-blame")
-(depends-on "git-commit-mode")
 (depends-on "gitconfig-mode")
 (depends-on "gitignore-mode")
 
