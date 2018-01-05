@@ -1,30 +1,24 @@
+;;; defuns --- A collection of small utilities
+;;
+;;; Commentary:
+;;
+;; A grab bag of functions I sometimes use.
+;;
+;;; Code:
+;;
 ;; From http://stackoverflow.com/questions/3633120/emacs-hotkey-to-align-equal-signs easy access, to align =
 (defun pjaspers-align-to-equals (begin end)
-  "Align region to equal signs"
+  "Align equal signs from BEGIN to END."
    (interactive "r")
    (align-regexp begin end "\\(\\s-*\\)=" 1 1 ))
 
-(defun pretty-print-touchpoint-body-data (string)
-(replace-regexp-in-string "{" "\n{" (replace-regexp-in-string "\"" "" (replace-regexp-in-string "\"," "\n" (url-unhex-string string))))
-)
-
-(defun pjaspers-bookmarklet-region (begin end)
-  "Takes the region, strips whitespace and urlencodes so it can be used as a bookmarklet DOES NOT WORK YET"
-  (interactive "r")
-  (let* ((s (buffer-substring-no-properties begin end))
-         (sim (replace-regexp-in-string "\s\\|\t\\|\n" "" s))
-         (complete (format "javascript:(function (){%s})()" sim))
-        )
-    (kill-new complete))
-  )
-
 ;; From http://stackoverflow.com/questions/12492/pretty-printing-xml-files-on-emacs
 (defun pretty-print-xml-region (begin end)
-  "Pretty format XML markup in region. You need to have nxml-mode
-http://www.emacswiki.org/cgi-bin/wiki/NxmlMode installed to do
-this.  The function inserts linebreaks to separate tags that have
-nothing but whitespace between them.  It then indents the markup
-by using nxml's indentation rules."
+  "Pretty format XML markup from BEGIN to END.
+You need to have 'nxml-mode' http://www.emacswiki.org/cgi-bin/wiki/NxmlMode
+installed to do this.  The function inserts linebreaks to separate tags that
+have nothing but whitespace between them.  It then indents the markup by using
+nxml's indentation rules."
   (interactive "r")
   (save-excursion
       (nxml-mode)
@@ -36,14 +30,15 @@ by using nxml's indentation rules."
 
 ;; If needed you could also use `python -mjson.tool`
 (defun pretty-print-json-region (start_pos end_pos)
-  "Uses the ruby gem `json` to pretty print the json"
+  "Use the ruby gem `json` to pretty print the json.
+Takes the region between START_POS and END_POS"
   (interactive "r")
   (let (script_name "python -mjson.tool")
     (shell-command-on-region start_pos end_pos script_name nil t nil t)
     ))
 
 (defun 37signals-status ()
-  "Checks and displays the status of 37 signals"
+  "Check and display the status of 37 signals."
   (interactive)
   (require 'json)
   (defvar url-http-end-of-headers)
@@ -66,7 +61,7 @@ by using nxml's indentation rules."
   str)
 
 (defun pjaspers-bundle-line-for-gem()
-  "Looks up a gem on rubygems and copies a rahter illustrative bundle line
+  "Looks up a gem on rubygems and copies a rather illustrative bundle line.
 
 Example for 'rails_admin':
 
@@ -163,14 +158,14 @@ Ready to be pasted in the Gemfile"
     (nreverse projects))
 
 (defun pjaspers-goto-config ()
-  "Open my config"
+  "Open my config."
   (interactive)
   (find-file "~/.emacs.d/pjaspers.el"))
 
 ; Searches backwards for a < kills everything upto a <, and will enter erb translation thingies
 ; Leaving you free to type the key while the kill ring has the text to be entered in the yaml
 (defun pjaspers-i18n-this()
-  "Searches backwards for a < kills everything upto a <, and will enter erb translation thingies"
+  "Searches backwards for a < kills everything upto a <, and will enter erb translation thingies."
   (interactive)
    (re-search-backward "\>")
    (forward-char 1)
@@ -184,18 +179,19 @@ Ready to be pasted in the Gemfile"
 ;; Never understood why Emacs doesn't have this function.
 ;;
 (defun rename-file-and-buffer (new-name)
- "Renames both current buffer and file it's visiting to NEW-NAME." (interactive "sNew name: ")
- (let ((name (buffer-name))
-	(filename (buffer-file-name)))
- (if (not filename)
-	(message "Buffer '%s' is not visiting a file!" name)
- (if (get-buffer new-name)
-	 (message "A buffer named '%s' already exists!" new-name)
-	(progn 	 (rename-file name new-name 1) 	 (rename-buffer new-name) 	 (set-visited-file-name new-name) 	 (set-buffer-modified-p nil)))))) ;;
+  "Renames both current buffer and file it's visiting to NEW-NAME."
+  (interactive "sNew name: ")
+  (let ((name (buffer-name))
+        (filename (buffer-file-name)))
+    (if (not filename)
+        (message "Buffer '%s' is not visiting a file!" name)
+      (if (get-buffer new-name)
+          (message "A buffer named '%s' already exists!" new-name)
+        (progn 	 (rename-file name new-name 1) 	 (rename-buffer new-name) 	 (set-visited-file-name new-name) 	 (set-buffer-modified-p nil))))))
 
 ;; Taken from [here](http://whattheemacsd.com/key-bindings.el-01.html)
 (defun wted-goto-line-with-feedback ()
-  "Show line numbers temporarily, while prompting for the line number input"
+  "Show line numbers temporarily, while prompting for the line number input."
   (interactive)
   (unwind-protect
       (progn
@@ -213,7 +209,7 @@ Ready to be pasted in the Gemfile"
       (set-window-margins nil margin margin))))
 
 (defun pjaspers-emoji-me()
-  "Takes a word and show in a temporary buffer all emoji matching that"
+  "Takes a word and show in a temporary buffer all emoji that match."
   (interactive)
   (let* ((wildcard-name (read-regexp "Enter regexp to look for: "))
          (all-known (ucs-names))
@@ -224,17 +220,20 @@ Ready to be pasted in the Gemfile"
       (switch-to-buffer buffer-name))))
 
 (defun pjaspers-open-notes-file ()
-  "Opens the default capture file for org-mode"
+  "Open the default capture file for 'org-mode'."
   (interactive)
   (find-file org-default-notes-file))
 
 (defun pj-show-vcard-image(begin end)
-  "Select the photo part from a vcard and this will show it"
+  "Select the photo part from a vcard and this will show it."
   (interactive "r")
   (let ((data (base64-decode-region begin end)))
     (insert-image (create-image data nil t))))
 
 (defun pjaspers-reveal-in-finder ()
-  "Show the current directory in the Finder"
+  "Show the current directory in the Finder."
   (interactive)
   (shell-command "open ."))
+
+(provide 'defuns)
+;;; defuns.el ends here

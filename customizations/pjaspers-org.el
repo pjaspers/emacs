@@ -1,4 +1,11 @@
-(setq org-directory "~/Dropbox/Documents/Personal/notes")
+;;; pjaspers-org --- Org-mode settings
+;;
+;;; Commentary:
+;;
+;; Org-mode is amazing.  I hardly use any of it and it's still great.
+;;
+;;; Code:
+(setq org-directory "~/Documents/notes")
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 
 (setq org-capture-templates
@@ -10,11 +17,6 @@
          "* %^{author} - %^{quote}")
         ("m" "Meeting" entry (file+headline org-default-notes-file "Notes")
              "* Meeting: %?\nEntered on %U\nAttendees:\nSummary:\nTodos:\n  %i\n  %a")))
-
-
-(define-key global-map "\C-cc" 'org-capture)
-(define-key global-map "\C-ca" 'org-agenda)
-
 
 (setq org-refile-targets '((nil :maxlevel . 4)
                                 ; all top-level headlines in the
@@ -32,7 +34,5 @@
 
 (setq org-agenda-files '("~/Dropbox/Documents/Personal/notes"))
 
-;; MobileOrg
-(setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
-;; (setq org-mobile-directory "~/Dropbox/Apps/MobileOrgBeta/")
-(setq org-mobile-inbox-for-pull "~/Dropbox/Documents/Personal/notes/from-mobile.org")
+(provide 'pjaspers-org)
+;;; pjaspers-org.el ends here

@@ -1,7 +1,11 @@
-;; All my custom keybindings in one minor mode
+;;; pjaspers-web --- All my custom keybindings in one minor mode
+;;
+;;; Commentary:
 ;;
 ;; Idea from [here](http://stackoverflow.com/questions/683425/globally-override-key-binding-in-emacs), now all my bindings are contained
-;; to a single minor mode. Which is nice.
+;; to a single minor mode.  Which is nice.
+;;
+;;; Code:
 
 (defvar pj-bindings-map (make-keymap)
   "A keymap for custom bindings.")
@@ -32,6 +36,8 @@
 ;; Use ag to search for things
 (define-key pj-bindings-map (kbd "<f2>") 'ag)
 
+(define-key pj-bindings-map (kbd "C-=") 'er/expand-region)
+
 ;; Setup textmate-ish bindings right again.
 (define-key pj-bindings-map (kbd "C-;") 'comment-line)
 (define-key pj-bindings-map (kbd "M-t") 'projectile-find-file)
@@ -53,6 +59,10 @@
 (define-key pj-bindings-map (kbd "C-,") 'mc/mark-previous-like-this)
 (define-key pj-bindings-map (kbd "C-c C-.") 'mc/mark-all-like-this)
 
+;; Org-Mode
+(define-key pj-bindings-map (kbd "C-c c") 'org-capture)
+(define-key pj-bindings-map (kbd "C-c a") 'org-agenda)
+
 (define-key pj-bindings-map (kbd "C-c y") 'browse-kill-ring)
 
 ;; HIPSTER WRITER MODE.
@@ -61,6 +71,10 @@
 ;; Cool trick to show line numbers only when needed
 (define-key pj-bindings-map [remap goto-line] 'wted-goto-line-with-feedback)
 
+;; Define and activate the keybindings
 (define-minor-mode pj-bindings-mode
   "A mode that activates my custom bindings."
   t nil pj-bindings-map)
+
+(provide 'pjaspers-bindings)
+;;; pjaspers-bindings.el ends here
