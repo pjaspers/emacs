@@ -28,7 +28,7 @@
 
   (emmet-mode t))
 
-(add-hook 'web-mode-hook  'pj-web-mode-hook)
+(add-hook 'web-mode-hook 'pjaspers-web-mode-hook)
 
 (provide 'pjaspers-web)
 ;;; pjaspers-web.el ends here
