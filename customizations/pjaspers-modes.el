@@ -12,9 +12,6 @@
 ;; Yaml
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-(add-hook 'yaml-mode-hook
-	  '(lambda ()
-n	     (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
 
 ;; Markdown
 (setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
