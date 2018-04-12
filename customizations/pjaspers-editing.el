@@ -29,15 +29,15 @@
 ;; All modes
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-;; Let's try auto adding parens (episode #345)
-(require 'smartparens-config)
-(smartparens-global-mode 1)
+;; Turns out electric-pair-mode got awesome since Emacs 24.4
+;; So long smart-parens, wrap-region and friends!
+(electric-pair-mode t)
 
 ;; show whitespace
  ;; limit line length
 (require 'whitespace)
 (setq whitespace-line-column 80)
-(setq whitespace-style '(face tabs empty trailing lines-tail))
+(setq whitespace-style '(face tabs empty trailing))
 (whitespace-mode +1)
 
 (require 'expand-region)
