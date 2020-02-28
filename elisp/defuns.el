@@ -214,9 +214,9 @@ Ready to be pasted in the Gemfile"
   (let* ((wildcard-name (read-regexp "Enter regexp to look for: "))
          (all-known (ucs-names))
          (buffer-name (format "*emoji-me-%s*" wildcard-name))
-         (results (remove-if-not (lambda(x) (let ((str (car x)))(string-match wildcard-name str))) all-known)))
+         (results (remove-if-not (lambda(x) (let ((str x))(string-match wildcard-name str))) (hash-table-keys all-known))))
     (with-output-to-temp-buffer buffer-name
-      (print (mapconcat (function (lambda(x) (format "%s - %s" (car x) (char-to-string (cdr x))))) results "\n"))
+      (print (mapconcat (function (lambda(x) (format "%s - %s" x (char-to-string (gethash x all-known))))) results "\n"))
       (switch-to-buffer buffer-name))))
 
 (defun pjaspers-open-notes-file ()
