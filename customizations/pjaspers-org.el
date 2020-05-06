@@ -16,7 +16,9 @@
         ("q" "Quote" entry (file+headline org-default-notes-file "Notes")
          "* %^{author} - %^{quote}")
         ("m" "Meeting" entry (file+headline org-default-notes-file "Notes")
-             "* Meeting: %?\nEntered on %U\nAttendees:\nSummary:\nTodos:\n  %i\n  %a")))
+         "* Meeting: %?\nEntered on %U\nAttendees:\nSummary:\nTodos:\n  %i\n  %a")
+        ("u" "URL" entry (file+headline org-default-notes-file "Notes")
+         "* %^{url}\n\n %^{description}")))
 
 (setq org-refile-targets '((nil :maxlevel . 4)
                                 ; all top-level headlines in the
