@@ -36,5 +36,14 @@
 
 (setq org-agenda-files '("~/Dropbox/Documents/Personal/notes"))
 
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (ruby . t)
+   (shell . t)
+   ))
+
+(setq org-confirm-babel-evaluate nil)
+
 (provide 'pjaspers-org)
 ;;; pjaspers-org.el ends here
