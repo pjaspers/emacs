@@ -13,6 +13,7 @@
 ;; ibuffer is a better buffer manager
 (define-key pj-bindings-map (kbd "C-x C-b")  'ibuffer)
 (define-key pj-bindings-map (kbd "C-x g") 'magit-status)
+(define-key pj-bindings-map (kbd "C-c g") 'magit-file-dispatch)
 (define-key pj-bindings-map (kbd "M-a") 'align-to-equals)
 
 (define-key pj-bindings-map (kbd "C-x p") 'pjaspers-ido-find-project)
@@ -71,6 +72,7 @@
 ;; Cool trick to show line numbers only when needed
 (define-key pj-bindings-map [remap goto-line] 'wted-goto-line-with-feedback)
 
+(define-key pj-bindings-map (kbd "C-x C-j") 'eval-print-last-sexp)
 ;; Define and activate the keybindings
 (define-minor-mode pj-bindings-mode
   "A mode that activates my custom bindings."
