@@ -235,5 +235,19 @@ Ready to be pasted in the Gemfile"
   (interactive)
   (shell-command "open ."))
 
+(defun temacco-beautify-sql ()
+  "Format the SQL in region using the sqlformat tool.
+If no region is active, the whole file is formatted."
+  (interactive)
+  (let ((start (if (region-active-p) (region-beginning) (point-min)))
+        (end (if (region-active-p) (region-end) (point-max))))
+    (shell-command-on-region start end "sqlformat -r -" nil t)))
+
+(defun copy-full-path-to-kill-ring ()
+  "copy buffer's full path to kill ring"
+  (interactive)
+  (when buffer-file-name
+    (kill-new (file-truename buffer-file-name))))
+
 (provide 'defuns)
 ;;; defuns.el ends here
