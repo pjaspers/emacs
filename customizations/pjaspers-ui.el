@@ -37,7 +37,7 @@
 (menu-bar-mode 0)
 
 ;; Toolbar and scrollbars not so much.
-(scroll-bar-mode -1)
+;; (scroll-bar-mode -1)
 (tool-bar-mode -1)
 
 ;; Line numbers are overrated, jump-to-line is better
