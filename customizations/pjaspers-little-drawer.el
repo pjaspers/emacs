@@ -13,6 +13,7 @@
 
 (setenv "HUSKY_SKIP_HOOKS" "1")
 
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 (setq deft-directory "~/dl/notes")
 (setq deft-recursive t)
