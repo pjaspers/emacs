@@ -23,7 +23,10 @@
 (set-face-attribute 'default nil :family "DejaVu Sans Mono")
 
 ;; font for all unicode characters
-(set-fontset-font t 'unicode "Apple Symbols" nil 'prepend)
+;; (set-fontset-font t 'unicode "Apple Symbols" nil 'prepend)
+
+;; This somehow brings me the emoji back
+(set-fontset-font t 'symbol (font-spec :family "Apple Color Emoji") nil 'prepend)
 
 ;; Highlight current
 (global-hl-line-mode 1)
