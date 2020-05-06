@@ -10,7 +10,7 @@
 (add-to-list 'exec-path "/usr/local/bin")
 
 ; PDF LaTeX
-(add-to-list 'exec-path "/usr/local/texlive/2011basic/bin/universal-darwin")
+(add-to-list 'exec-path "/Library/TeX/texbin")
 
 (require 'exec-path-from-shell)
 ;; OS X has an issue with picking up the right system env
