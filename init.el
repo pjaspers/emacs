@@ -24,16 +24,20 @@
 (require 'pjaspers-vc)
 
 ;; Targeted modes
-(require 'pjaspers-ruby)
-(require 'pjaspers-web)
-(require 'pjaspers-shell)
+(require 'pjaspers-go)
+(require 'pjaspers-js)
 (require 'pjaspers-modes)
 (require 'pjaspers-org)
+(require 'pjaspers-ruby)
+(require 'pjaspers-shell)
+(require 'pjaspers-web)
 
 ;; All the keybindings
 (require 'pjaspers-bindings)
 
-
+(setenv "LANG" "en_BE.UTF-8")
+(setenv "LC_ALL" "en_BE.UTF-8")
 
 (add-to-list 'load-path "~/.emacs.d/elisp")
 (load "defuns")            ;; Lisp helper functions
+(put 'narrow-to-region 'disabled nil)
