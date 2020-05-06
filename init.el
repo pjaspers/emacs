@@ -1,10 +1,7 @@
 ;; custom place to save, wait for it, customizations
 
-;; (package-initialize)
-
 (setq custom-file "~/.emacs.d/custom.el")
 (when (file-exists-p "custom.el") (load "custom"))
-(require 'cl)
 (add-to-list 'load-path "~/.emacs.d/customizations")
 
 ;; Homebrew dir

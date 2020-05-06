@@ -20,7 +20,7 @@
 
 (set-fontset-font t 'symbol (font-spec :family "Apple Color Emoji") nil 'prepend)
 
-(require 'ox-confluence)
+;; (require 'ox-confluence)
 
 (provide 'pjaspers-little-drawer)
 ;;; pjaspers-litte-drawer.el ends here

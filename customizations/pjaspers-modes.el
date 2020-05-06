@@ -22,9 +22,9 @@
 
 
 ;; Set your lisp system and, optionally, some contribs
-(require 'slime)
-(setq inferior-lisp-program "/usr/local/bin/clisp")
-(setq slime-contribs '(slime-fancy))
+;; (require 'slime)
+;; (setq inferior-lisp-program "/usr/local/bin/clisp")
+;; (setq slime-contribs '(slime-fancy))
 
 ;; Yes, you can do this same trick with the cool "It's All Text" firefox add-on :-)
 (add-to-list 'auto-mode-alist '("/mutt-\\|itsalltext.*mail\\.google" . mail-mode))
