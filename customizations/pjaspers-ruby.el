@@ -7,6 +7,7 @@
 ;;; Code:
 ;;
 ;; Rake files are ruby, too, as are gemspecs, rackup files, and gemfiles.
+(add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
@@ -63,7 +64,7 @@
 
   ;; enable handy ruby tools.
   ;; https://github.com/rejeep/ruby-tools.el
-  ;; (ruby-tools-mode +1)
+  (ruby-tools-mode +1)
 
   ;; CamelCase aware editing operations
   (subword-mode +1))
