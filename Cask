@@ -1,6 +1,7 @@
 (source gnu)
 (source melpa)
 (source marmalade)
+(source "org"       "http://orgmode.org/elpa/")
 
 ;; pjaspers-ruby
 (depends-on "chruby")
@@ -24,7 +25,9 @@
 (depends-on "elm-mode")
 (depends-on "swift-mode")
 (depends-on "markdown-mode")
+(depends-on "edit-indirect") ;; Edit code blocks in new buffer
 (depends-on "graphviz-dot-mode")
+(depends-on "org-plus-contrib")
 
 ;; pjaspers-vc
 (depends-on "magit")
@@ -53,5 +56,6 @@
 (depends-on "dash")
 (depends-on "f")
 (depends-on "htmlize")
+(depends-on "slime")
 
 (depends-on "s")
