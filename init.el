@@ -35,6 +35,8 @@
 ;; All the keybindings
 (require 'pjaspers-bindings)
 
+(require 'pjaspers-little-drawer)
+
 (setenv "LANG" "en_BE.UTF-8")
 (setenv "LC_ALL" "en_BE.UTF-8")
 
