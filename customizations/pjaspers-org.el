@@ -18,7 +18,7 @@
         ("m" "Meeting" entry (file+headline org-default-notes-file "Notes")
          "* Meeting: %?\nEntered on %U\nAttendees:\nSummary:\nTodos:\n  %i\n  %a")
         ("u" "URL" entry (file+headline org-default-notes-file "Notes")
-         "* %^{url}\n\n %^{description}")))
+         "* %^{description}\n %^{url}")))
 
 (setq org-refile-targets '((nil :maxlevel . 4)
                                 ; all top-level headlines in the
@@ -34,7 +34,7 @@
 ;; refile targets
 (setq org-refile-allow-creating-parent-nodes 'confirm)
 
-(setq org-agenda-files '("~/Dropbox/Documents/Personal/notes"))
+(setq org-agenda-files '("~/Documents/notes"))
 
 (org-babel-do-load-languages
  'org-babel-load-languages
