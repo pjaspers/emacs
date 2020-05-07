@@ -15,7 +15,7 @@
 
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
-(setq deft-directory "~/dl/notes")
+(setq deft-directory "~/Documents/notes")
 (setq deft-recursive t)
 
 (set-fontset-font t 'symbol (font-spec :family "Apple Color Emoji") nil 'prepend)
