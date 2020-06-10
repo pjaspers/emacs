@@ -28,31 +28,6 @@ nxml's indentation rules."
       (indent-region begin end))
     (message "Ah, much better!"))
 
-;; If needed you could also use `python -mjson.tool`
-(defun pretty-print-json-region (start_pos end_pos)
-  "Use the ruby gem `json` to pretty print the json.
-Takes the region between START_POS and END_POS"
-  (interactive "r")
-  (let (script_name "python -mjson.tool")
-    (shell-command-on-region start_pos end_pos script_name nil t nil t)
-    ))
-
-(defun 37signals-status ()
-  "Check and display the status of 37 signals."
-  (interactive)
-  (require 'json)
-  (defvar url-http-end-of-headers)
-
-  (let* ((json-data (save-excursion
-                       (set-buffer (url-retrieve-synchronously "http://status.37signals.com/status.json"))
-                       (goto-char url-http-end-of-headers)
-                       (json-read)))
-         (status-data (cdr (assoc 'status json-data)))
-         (updated_at (cdr (assoc 'updated_at status-data)))
-         (mood (cdr (assoc 'mood status-data)))
-         (description (cdr (assoc 'description status-data))))
-    (message "%s: %s" (capitalize mood) description)))
-
 (defun chomp (str)
   "Chomp leading and tailing whitespace from STR."
   (while (string-match "\\`\n+\\|^\\s-+\\|\\s-+$\\|\n+\\'"
@@ -116,37 +91,6 @@ Ready to be pasted in the Gemfile"
     (kill-new pkg_line)
     (message "%s" pkg_line)))
 
-(defun pjaspers-pkg-line-for-cocoapods()
-  "Looks up a package on npm and copies a the line ready to be pasted in the package.json"
-  (interactive)
-  (require 'json)
-  (defvar url-http-end-of-headers)
-
-  (let* ((gem_name (read-string "Enter package: "))
-         (json-data (save-excursion
-                      (set-buffer (url-retrieve-synchronously (concat "http://search.cocoapods.org/api/v1/pods.flat.hash.json?query=" gem_name)))
-                      (goto-char url-http-end-of-headers)
-                      (json-read)))
-         (name (cdr (assoc 'id json-data)))
-      (version (cdr (assoc 'version json-data))))
-      (pkg_line (format "\"%s\": \"%s\"" name version))
-    (kill-new pkg_line)
-    (message "%s" pkg_line)))
-
-(defun build-and-run()
-  (interactive)
-  (let ((root (textmate-project-root)))
-    (when (null root)
-      (error
-       (concat
-        "Can't find a suitable project root ("
-        (string-join " " *textmate-project-roots* )
-        ")")))
-    (compile
-     (format "xcodebuild -project %s -configuration Debug -sdk iphonesimulator build && ios-sim launch %s --family ipad"
-             (concat (expand-file-name root) "TouchPoint.xcodeproj")
-             (concat (expand-file-name root) "build/Debug-iphonesimulator/TouchPoint.app")))))
-
 (defun pjaspers-ido-find-project()
   "List projects"
   (interactive)
@@ -161,11 +105,6 @@ Ready to be pasted in the Gemfile"
                 (push (cons dir (concat path "/" dir)) projects))
               (directory-files path nil "^[^.]"))))
     (nreverse projects))
-
-(defun pjaspers-goto-config ()
-  "Open my config."
-  (interactive)
-  (find-file "~/.emacs.d/pjaspers.el"))
 
 ; Searches backwards for a < kills everything upto a <, and will enter erb translation thingies
 ; Leaving you free to type the key while the kill ring has the text to be entered in the yaml
