@@ -224,6 +224,16 @@ Ready to be pasted in the Gemfile"
       (print (mapconcat (function (lambda(x) (format "%s - %s" x (char-to-string (gethash x all-known))))) results "\n"))
       (switch-to-buffer buffer-name))))
 
+(defun pjaspers-emoji-me-b()
+  "Takes a word and show in a temporary buffer all emoji that match."
+  (interactive)
+  (let* ((wildcard-name (read-regexp "Enter regexp to look for: "))
+         (all-known (ucs-names))
+         (buffer-name (format "*emoji-me-%s*" wildcard-name))
+         (results (remove-if-not (lambda(x) (let ((str x))(string-match wildcard-name str))) (hash-table-keys all-known))))
+    (kill-new (completing-read "Tada " (mapcar (lambda(x) (format "%s - %s" x (char-to-string (gethash x all-known)))) results)))))
+
+
 (defun pjaspers-open-notes-file ()
   "Open the default capture file for 'org-mode'."
   (interactive)
