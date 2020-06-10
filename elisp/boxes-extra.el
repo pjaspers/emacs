@@ -184,19 +184,17 @@ if nil,the top of the file."
 (defun org-refile-to-projects-dir ()
   "Move the current subtree to a file in the `projects' directory."
   (interactive)
-  (org-refile-subtree-to-file "~/dl/notes/work"))
+  (org-refile-subtree-to-file "~/Documents/notes/work"))
 
 (defun org-refile-to-technical-dir ()
   "Move the current subtree to a file in the `technical' directory."
   (interactive)
-  (org-refile-subtree-to-file "~/dl/notes/technical"))
-
-(define-auto-insert "/personal/*\\.org" ["personal.org" ha/autoinsert-yas-expand])
+  (org-refile-subtree-to-file "~/Documents/notes/technical"))
 
 (defun org-refile-to-personal-dir ()
   "Move the current subtree to a file in the `personal' directory."
   (interactive)
-  (org-refile-subtree-to-file "~/dl/notes/personal"))
+  (org-refile-subtree-to-file "~/Documents/notes/personal"))
 
 (provide 'boxes-extras)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
