@@ -6,13 +6,14 @@
 ;;
 ;;; Code:
 (setq org-directory "~/Documents/notes")
+(setq org-agenda-files '("~/Documents/notes"))
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 
 (setq org-capture-templates
       '(("t" "Todo" entry (file+headline org-default-notes-file "Tasks")
              "* TODO %?\n  %T\n%i\n  %a")
         ("n" "Note" entry (file+headline org-default-notes-file "Notes")
-             "* %?\nEntered on %U\n  %i\n  %a")
+             "* %?\n:PROPERTIES:\n:Created: %U\n:END:\n  %i\n  %a")
         ("q" "Quote" entry (file+headline org-default-notes-file "Notes")
          "* %^{author} - %^{quote}")
         ("m" "Meeting" entry (file+headline org-default-notes-file "Notes")
@@ -33,8 +34,6 @@
 ;; allow to create new nodes (must be confirmed by the user) as
 ;; refile targets
 (setq org-refile-allow-creating-parent-nodes 'confirm)
-
-(setq org-agenda-files '("~/Documents/notes"))
 
 (org-babel-do-load-languages
  'org-babel-load-languages
