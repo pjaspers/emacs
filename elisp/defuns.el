@@ -151,7 +151,7 @@ Ready to be pasted in the Gemfile"
   "List projects"
   (interactive)
   (let ((projects (pjaspers-find-projects-in-subdirectory "~/development")))
-    (find-file (cdr (assoc (ido-completing-read "Project: " (mapcar #'car projects))  projects)))))
+    (find-file (cdr (assoc (completing-read "Project: " (mapcar #'car projects))  projects)))))
 
 (defun pjaspers-find-projects-in-subdirectory(directory)
   (setq projects nil)
