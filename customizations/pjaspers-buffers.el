@@ -43,5 +43,20 @@
           (lambda ()
             (define-key ido-completion-map [C-s] 'ido-next-history-element)))
 
+;; Let's give ivy a chance
+(setq projectile-completion-system 'ivy)
+
+(defun horizontal-ivy-format-function (cands)
+  (ivy--format-function-generic
+   (lambda (str)
+     (ivy--add-face str 'ivy-current-match))
+   #'identity
+   cands
+   " | "))
+
+(add-to-list 'ivy-format-functions-alist '(t . horizontal-ivy-format-function))
+(setq ivy-use-virtual-buffers t)
+(define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done)
+
 (provide 'pjaspers-buffers)
 ;;; pjaspers-buffers.el ends here
