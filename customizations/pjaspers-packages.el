@@ -89,6 +89,8 @@
 
 ;; pjaspers-buffers
 
+(use-package org-roam
+  :ensure t)
 
 (provide 'pjaspers-packages)
 ;;; pjaspers-packages.el ends here

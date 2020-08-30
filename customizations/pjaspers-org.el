@@ -9,6 +9,9 @@
 (setq org-agenda-files '("~/Documents/notes"))
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 
+;; Org-Roam specific
+(setq org-roam-directory "/Users/pjaspers/Documents/notes")
+
 (setq org-capture-templates
       '(("t" "Todo" entry (file+headline org-default-notes-file "Tasks")
              "* TODO %?\n  %T\n%i\n  %a")
@@ -43,6 +46,9 @@
    ))
 
 (setq org-confirm-babel-evaluate nil)
+
+(with-eval-after-load 'ox
+  (require 'ox-hugo))
 
 (provide 'pjaspers-org)
 ;;; pjaspers-org.el ends here
