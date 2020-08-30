@@ -77,6 +77,8 @@
   :ensure t)
 
 ;; pjaspers-global
+(use-package ivy
+  :ensure t)
 (use-package flx-ido
   :ensure t)
 (use-package flycheck
