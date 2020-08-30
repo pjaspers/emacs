@@ -56,7 +56,7 @@
   (whitespace-mode 1)
   (projectile-mode 1)
   (local-set-key [M-t] 'projectile-find-file)
-
+  (setq ruby-insert-encoding-magic-comment nil)
   ;; enable a REPL process loaded with your
   ;; ruby project that provides lots of code insight.
   ;; https://github.com/nonsequitur/inf-ruby
