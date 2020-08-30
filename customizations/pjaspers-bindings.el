@@ -39,6 +39,9 @@
 
 (define-key pj-bindings-map (kbd "C-=") 'er/expand-region)
 
+;; Counsel overrides
+(define-key pj-bindings-map (kbd "C-x C-f") 'counsel-find-file)
+
 ;; Setup textmate-ish bindings right again.
 (define-key pj-bindings-map (kbd "C-;") 'comment-line)
 (define-key pj-bindings-map (kbd "M-t") 'projectile-find-file)
