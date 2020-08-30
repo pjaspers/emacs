@@ -197,6 +197,11 @@ If no region is active, the whole file is formatted."
         (end (if (region-active-p) (region-end) (point-max))))
     (shell-command-on-region start end "sqlformat -r -" nil t)))
 
+(defun pj-insert-timestamp()
+  "Inserts a formatted current time"
+  (interactive)
+  (insert (format-time-string "%Y%m%d%H%M" (current-time))))
+
 (defun copy-full-path-to-kill-ring ()
   "copy buffer's full path to kill ring"
   (interactive)
