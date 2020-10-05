@@ -57,6 +57,7 @@
 (add-to-list 'ivy-format-functions-alist '(t . horizontal-ivy-format-function))
 (setq ivy-use-virtual-buffers t)
 (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done)
+(ivy-mode 1)
 
 (provide 'pjaspers-buffers)
 ;;; pjaspers-buffers.el ends here

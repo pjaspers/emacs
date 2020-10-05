@@ -39,8 +39,12 @@
 
 (define-key pj-bindings-map (kbd "C-=") 'er/expand-region)
 
-;; Counsel overrides
+;; Counsel/ivy overrides
 (define-key pj-bindings-map (kbd "C-x C-f") 'counsel-find-file)
+(define-key pj-bindings-map (kbd "C-x b")  'ivy-switch-buffer)
+(define-key pj-bindings-map (kbd "C-c s") 'swiper-isearch)
+(define-key pj-bindings-map (kbd "C-s") 'isearch-forward)
+(define-key pj-bindings-map (kbd "M-y") 'counsel-yank-pop)
 
 ;; Setup textmate-ish bindings right again.
 (define-key pj-bindings-map (kbd "C-;") 'comment-line)
@@ -50,7 +54,7 @@
 (define-key pj-bindings-map (kbd "C-r") 'replace-regexp)
 
 ;; Use regex searches by default.
-;; (define-key pj-bindings-map (kbd "C-s") 'isearch-forward-regexp)
+(define-key pj-bindings-map (kbd "C-s") 'isearch-forward-regexp)
 (define-key pj-bindings-map (kbd "C-M-s") 'isearch-forward)
 (define-key pj-bindings-map (kbd "C-M-r") 'isearch-backward)
 
