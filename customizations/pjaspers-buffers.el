@@ -32,32 +32,14 @@
 ;; disable ido faces to see flx highlights.
 (setq ido-use-faces nil)
 
+(defun bind-ido-keys ()
+  "Keybindings for ido mode."
+  (define-key ido-completion-map (kbd "C-n") 'ido-next-match)
+  (define-key ido-completion-map (kbd "C-p")   'ido-prev-match))
+
+(add-hook 'ido-setup-hook #'bind-ido-keys)
+
 (put 'ido-exit-minibuffer 'disabled nil)
-
-;; (define-key ido-completion-map [C-s] 'ido-next-history-element)
-;; This tab override shouldn't be necessary given ido's default
-;; configuration, but minibuffer-complete otherwise dominates the
-;; tab binding because of my custom tab-completion-everywhere
-;; configuration.
-(add-hook 'ido-setup-hook
-          (lambda ()
-            (define-key ido-completion-map [C-s] 'ido-next-history-element)))
-
-;; Let's give ivy a chance
-(setq projectile-completion-system 'ivy)
-
-(defun horizontal-ivy-format-function (cands)
-  (ivy--format-function-generic
-   (lambda (str)
-     (ivy--add-face str 'ivy-current-match))
-   #'identity
-   cands
-   " | "))
-
-(add-to-list 'ivy-format-functions-alist '(t . horizontal-ivy-format-function))
-(setq ivy-use-virtual-buffers t)
-(define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done)
-(ivy-mode 1)
 
 (provide 'pjaspers-buffers)
 ;;; pjaspers-buffers.el ends here
