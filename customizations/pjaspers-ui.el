@@ -49,6 +49,8 @@
 ;; Theme
 (setq custom-safe-themes t)
 (load-theme 'leuven)
-
+(setq inferior-lisp-program "sbcl")
+(setq show-paren-delay 0)
+(show-paren-mode)
 (provide 'pjaspers-ui)
 ;;; pjaspers-ui.el ends here
