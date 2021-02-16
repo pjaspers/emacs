@@ -41,7 +41,7 @@
 
 ;; Setup textmate-ish bindings right again.
 (define-key pj-bindings-map (kbd "C-;") 'comment-line)
-(define-key pj-bindings-map (kbd "M-t") 'projectile-find-file)
+(define-key pj-bindings-map (kbd "M-t") 'project-find-file)
 
 ;; Putting replace in a handy place
 (define-key pj-bindings-map (kbd "C-r") 'replace-regexp)
@@ -62,6 +62,7 @@
 
 ;; Org-Mode
 (define-key pj-bindings-map (kbd "C-c o c") 'org-capture)
+(define-key pj-bindings-map (kbd "C-c o b") 'pinboard-add)
 (define-key pj-bindings-map (kbd "C-c o a") 'org-agenda)
 (define-key pj-bindings-map (kbd "C-c o f") 'org-roam-find-file)
 (define-key pj-bindings-map (kbd "C-c o i") 'org-roam-insert)
