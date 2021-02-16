@@ -17,7 +17,7 @@
 
 ;; Better buffer swithing
 (require 'ido)
-(ido-mode t)
+(ido-mode nil)
 (setq ido-enable-flex-matching t) ; case insensitive matching
 (add-to-list 'ido-ignore-files "\\.DS_Store")
 (setq ido-create-new-buffer 'always) ; always create a new buffer with Ido
@@ -26,7 +26,7 @@
 ;; flx-ido
 ;; Makes ido to fuzzy matching.
 (require 'flx-ido)
-(ido-mode 1)
+(ido-mode nil)
 (ido-everywhere 1)
 (flx-ido-mode 1)
 ;; disable ido faces to see flx highlights.
