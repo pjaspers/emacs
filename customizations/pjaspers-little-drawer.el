@@ -73,6 +73,9 @@
 
 ;; (require 'ox-confluence)
 
+(use-package quickrun
+  :ensure t)
+
 (require 'quickrun)
 
 (provide 'pjaspers-little-drawer)
