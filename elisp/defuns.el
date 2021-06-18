@@ -208,5 +208,15 @@ If no region is active, the whole file is formatted."
   (when buffer-file-name
     (kill-new (file-truename buffer-file-name))))
 
+(defun eddy ()
+  "Like frasier, and niles, but smaller"
+  (interactive)
+  ;; "print File.open('/usr/share/dict/words').read.lines.reject{|w| w.length < 3 || 10 < w.length}.sample(4).map{|w| w.strip! && w.downcase}.join('-')" | tee >(pbcopy)
+
+  (kill-new (mapconcat 'identity (mapcar (lambda (_) (with-temp-buffer
+    (insert-file-contents "/usr/share/dict/words")
+    (downcase (seq-random-elt (seq-filter (lambda (e) (and (> (length e) 3) (< (length e) 10))) (split-string (buffer-string) "\n" t)))))) '(1 2 3 4)) "-"))
+  )
+
 (provide 'defuns)
 ;;; defuns.el ends here
