@@ -3,7 +3,7 @@
 ;;
 ;; Make sure that no matter where this config is stored, much like the
 ;; Iron Giant, it can always find its parts.
-
+(setq org-roam-v2-ack t)
 (defvar pjaspers-start-directory
   user-emacs-directory
   "Directory where emacs loaded from")

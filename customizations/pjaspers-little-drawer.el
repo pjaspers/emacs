@@ -1,8 +1,8 @@
-;;; pjaspers-little-drawer --- A little drawer for random stuff
+
 ;;
 ;;; Commentary:
 ;;
-;; No matter how much you clean, you'll always need a place to store a
+;; No matter how much you clean, you'll always need a place to store alsdfkldsklfj
 ;; bunch of crap. This is usually a little drawer that eventually
 ;; piles out with useful and less useful stuff. At that point you
 ;; probably move things to places where they belong. But this is a
@@ -59,6 +59,15 @@
      (width . 0.8)
      (left . 0.2))))
 
+(use-package orderless
+  :init
+  ;; Configure a custom style dispatcher (see the Consult wiki)
+  ;; (setq orderless-style-dispatchers '(+orderless-dispatch)
+  ;;       orderless-component-separator #'orderless-escapable-split-on-space)
+  (setq completion-styles '(orderless)
+        completion-category-defaults nil
+        completion-category-overrides '((file (styles partial-completion)))))
+
 (setq selectrum-extend-current-candidate-highlight t)
 (set-face-attribute 'selectrum-current-candidate nil
   :background "#F6FECD")
@@ -77,6 +86,12 @@
   :ensure t)
 
 (require 'quickrun)
+
+;; selectrum like thing
+(use-package vertico
+  :init
+  (vertico-mode))
+
 
 (provide 'pjaspers-little-drawer)
 ;;; pjaspers-litte-drawer.el ends here

@@ -54,6 +54,12 @@
 
 (setq org-roam-dailies-capture-templates
       '(("d" "default" entry
+         "* %?"
+         :target (file+head "%<%Y-%m-%d>.org"
+                            "#+title: %<%Y-%m-%d>\n"))))
+
+(setq org-roam-dailies-capture-templates
+      '(("d" "default" entry
          #'org-roam-capture--get-point
          "* %?"
          :file-name "dailies/%<%Y-%m-%d>"

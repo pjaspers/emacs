@@ -64,7 +64,7 @@
 (define-key pj-bindings-map (kbd "C-c o c") 'org-capture)
 (define-key pj-bindings-map (kbd "C-c o b") 'pinboard-add)
 (define-key pj-bindings-map (kbd "C-c o a") 'org-agenda)
-(define-key pj-bindings-map (kbd "C-c o f") 'org-roam-find-file)
+(define-key pj-bindings-map (kbd "C-c o f") 'org-roam-node-find)
 (define-key pj-bindings-map (kbd "C-c o i") 'org-roam-insert)
 (define-key pj-bindings-map (kbd "C-c o t") 'org-roam-dailies-find-today)
 (define-key pj-bindings-map (kbd "C-c o d") 'org-roam-dailies-capture-today)
