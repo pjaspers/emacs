@@ -10,4 +10,12 @@ projectile-bookmarks.eld
 bookmarks
 .org-id-locations
 smex-items
-eln-cache
+eln-cache/
+games
+newsticker
+org-roam.db
+projects
+recentf
+transient/
+ido.last
+forge-database.sqlite
