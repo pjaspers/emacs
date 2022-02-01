@@ -103,16 +103,14 @@ Org-mode properties drawer already, keep the headline and don’t insert
   (let ((title (nth 4 (org-heading-components)))
         (has-properties (org-get-property-block)))
     (org-cut-subtree)
-    (org-roam-find-file title nil nil 'no-confirm)
+    (org-roam-node-find nil title)
     (org-paste-subtree)
     (unless has-properties
       (kill-line)
       (while (outline-next-heading)
         (org-promote)))
     (goto-char (point-min))
-    (when has-properties
-      (kill-line)
-      (kill-line))))
+    ))
 
 (provide 'pjaspers-little-drawer)
 ;;; pjaspers-litte-drawer.el ends here
