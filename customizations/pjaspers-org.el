@@ -51,20 +51,17 @@
   (require 'ox-hugo))
 
 (setq org-roam-dailies-directory "dailies/")
-
 (setq org-roam-dailies-capture-templates
       '(("d" "default" entry
          "* %?"
          :target (file+head "%<%Y-%m-%d>.org"
                             "#+title: %<%Y-%m-%d>\n"))))
 
-(setq org-roam-dailies-capture-templates
-      '(("d" "default" entry
-         #'org-roam-capture--get-point
-         "* %?"
-         :file-name "dailies/%<%Y-%m-%d>"
-         :head "#+title: %<%Y-%m-%d>\n\n")))
-
+(setq org-roam-mode-section-functions
+      (list #'org-roam-backlinks-section
+            #'org-roam-reflinks-section
+            ;; #'org-roam-unlinked-references-section
+            ))
 (defun org-roam-create-note-from-headline ()
   "Create an Org-roam note from the current headline and jump to it.
 
@@ -87,6 +84,35 @@ Org-mode properties drawer already, keep the headline and don’t insert
     (when has-properties
       (kill-line)
       (kill-line))))
+
+(define-transient-command pj/transient-org
+    "Dailies"
+    [:description
+     "Dailies"
+     ["Actions"
+      ("c" "Capture" org-capture)
+      ("a" "Agenda" org-agenda)
+      ("f" "Find or create node" org-roam-node-find)
+      ("i" "Insert node" org-roam-node-insert)
+      ("d" "Dailies" pj/transient-dailies)
+      ("r" "Create node from headline" org-roam-create-note-from-headline)
+      ("p" "Pinboard add" pinboard-add)
+      ("i" "Insert node" org-roam-node-insert)
+      ("t" "Go to today note" org-roam-dailies-goto-today)
+      ]])
+
+(define-transient-command pj/transient-dailies
+    "Dailies"
+    [:description
+     "Dailies"
+     ["Actions"
+      ("t" "Go to today" org-roam-dailies-goto-today)
+      ("c" "Capture today" org-roam-dailies-capture-today)
+      ("G" "Go to date" org-roam-dailies-goto-date)
+      ]
+     ["Navigation"
+      ("n" "next" org-roam-dailies-goto-next-note :transient t)
+      ("p" "prev" org-roam-dailies-goto-previous-note :transient t)]])
 
 (provide 'pjaspers-org)
 ;;; pjaspers-org.el ends here
