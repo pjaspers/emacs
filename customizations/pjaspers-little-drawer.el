@@ -92,5 +92,52 @@
   :init
   (vertico-mode))
 
+(defun org-roam-create-note-from-headline ()
+  "Create an Org-roam note from the current headline and jump to it.
+Normally, insert the headline’s title using the ’#title:’ file-level property
+and delete the Org-mode headline. However, if the current headline has a
+Org-mode properties drawer already, keep the headline and don’t insert
+‘#+title:'. Org-roam can extract the title from both kinds of notes, but using
+‘#+title:’ is a bit cleaner for a short note, which Org-roam encourages."
+  (interactive)
+  (let ((title (nth 4 (org-heading-components)))
+        (has-properties (org-get-property-block)))
+    (org-cut-subtree)
+    (org-roam-node-find nil title)
+    (org-paste-subtree)
+    (unless has-properties
+      (kill-line)
+      (while (outline-next-heading)
+        (org-promote)))
+    (goto-char (point-min))
+    ))
+
+(define-transient-command pj/transient-org
+    "Dailies"
+    [:description
+     "Dailies"
+     ["Actions"
+      ("c" "Capture" org-capture)
+      ("a" "Agenda" org-agenda)
+      ("f" "Find or create node" org-roam-node-find)
+      ("i" "Insert node" org-roam-node-insert)
+      ("d" "Dailies" pj/transient-dailies)
+      ("r" "Create node from headline" org-roam-create-note-from-headline)
+      ]])
+
+(define-transient-command pj/transient-dailies
+    "Dailies"
+    [:description
+     "Dailies"
+     ["Actions"
+      ("d" "Go to today" org-roam-dailies-goto-today)
+      ("c" "Capture today" org-roam-dailies-capture-today)
+      ("G" "Go to date" org-roam-dailies-goto-date)
+      ("i" "More fun" pj/dailies)
+      ]
+     ["Navigation"
+      ("n" "next" org-roam-dailies-goto-next-note :transient t)
+      ("p" "prev" org-roam-dailies-goto-previous-note :transient t)]])
+
 (provide 'pjaspers-little-drawer)
 ;;; pjaspers-litte-drawer.el ends here
