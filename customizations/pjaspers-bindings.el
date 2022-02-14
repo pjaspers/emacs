@@ -35,7 +35,7 @@
 (define-key pj-bindings-map (kbd "C-c C-k") 'kill-region)
 
 ;; Use ag to search for things
-(define-key pj-bindings-map (kbd "<f2>") 'ag)
+(define-key pj-bindings-map (kbd "<f2>") 'pjaspers-ignored-ag)
 
 (define-key pj-bindings-map (kbd "C-=") 'er/expand-region)
 

@@ -57,11 +57,18 @@
          :target (file+head "%<%Y-%m-%d>.org"
                             "#+title: %<%Y-%m-%d>\n"))))
 
+(setq org-roam-capture-templates
+      '(("d" "default" plain "%?"
+        :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
+                           "#+title: Such ${title}\n")
+        :unnarrowed t)))
+
 (setq org-roam-mode-section-functions
       (list #'org-roam-backlinks-section
             #'org-roam-reflinks-section
-            ;; #'org-roam-unlinked-references-section
+            #'org-roam-unlinked-references-section
             ))
+
 (defun org-roam-create-note-from-headline ()
   "Create an Org-roam note from the current headline and jump to it.
 
@@ -91,14 +98,20 @@ Org-mode properties drawer already, keep the headline and don’t insert
      "Dailies"
      ["Actions"
       ("c" "Capture" org-capture)
-      ("a" "Agenda" org-agenda)
       ("f" "Find or create node" org-roam-node-find)
       ("i" "Insert node" org-roam-node-insert)
       ("d" "Dailies" pj/transient-dailies)
-      ("r" "Create node from headline" org-roam-create-note-from-headline)
       ("p" "Pinboard add" pinboard-add)
+      ("n" "Create node from headline" org-roam-create-note-from-headline)
+      ]
+     ["Editing"
       ("i" "Insert node" org-roam-node-insert)
+      ("a" "Add tag" org-roam-tag-add)
+      ]
+     ["Navigation"
+      ("g" "Agenda" org-agenda)
       ("t" "Go to today note" org-roam-dailies-goto-today)
+      ("r" "Go to random note" pj-random-node)
       ]])
 
 (define-transient-command pj/transient-dailies
@@ -113,6 +126,19 @@ Org-mode properties drawer already, keep the headline and don’t insert
      ["Navigation"
       ("n" "next" org-roam-dailies-goto-next-note :transient t)
       ("p" "prev" org-roam-dailies-goto-previous-note :transient t)]])
+
+(defun pj-random-node (&optional other-window)
+  "Find and open a random Org-roam node.
+With prefix argument OTHER-WINDOW, visit the node in another
+window instead."
+  (interactive current-prefix-arg)
+  (let ((random-row (seq-random-elt (org-roam-db-query [:select [id file pos]
+                                                                :from nodes
+                                                                :where (not (like file '"%dailies%"))]))))
+    (org-roam-node-visit (org-roam-node-create :id (nth 0 random-row)
+                                               :file (nth 1 random-row)
+                                               :point (nth 2 random-row))
+                         other-window)))
 
 (provide 'pjaspers-org)
 ;;; pjaspers-org.el ends here
