@@ -152,6 +152,11 @@ Ready to be pasted in the Gemfile"
     (let ((margin (/ (window-width) 5)))
       (set-window-margins nil margin margin))))
 
+(defun pjaspers-ignored-ag()
+  (interactive)
+  (let ((ag-ignore-list '("*.min.js")))
+    (call-interactively #'ag)))
+
 (defun pjaspers-emoji-me()
   "Takes a word and show in a temporary buffer all emoji that match."
   (interactive)
