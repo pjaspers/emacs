@@ -43,6 +43,7 @@
  '((emacs-lisp . t)
    (ruby . t)
    (shell . t)
+   (deno . t)
    ))
 
 (setq org-confirm-babel-evaluate nil)
