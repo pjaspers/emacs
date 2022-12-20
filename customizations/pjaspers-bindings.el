@@ -23,6 +23,7 @@
 (define-key pj-bindings-map (kbd "C-x C-n") 'pjaspers-pkg-line-for-npm)
 (define-key pj-bindings-map (kbd "C-x C-r") 'pjaspers-reveal-in-finder)
 (define-key pj-bindings-map (kbd "C-x 9") 'pjaspers-emoji-me)
+(define-key pj-bindings-map (kbd "C-x f") (lambda() (interactive)(kill-new buffer-file-name)))
 
 ;; Make it easier to hit M-x
 ;; http://steve.yegge.googlepages.com/effective-emacs
