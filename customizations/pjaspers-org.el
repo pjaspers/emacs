@@ -93,10 +93,9 @@ Org-mode properties drawer already, keep the headline and don’t insert
       (kill-line)
       (kill-line))))
 
-(define-transient-command pj/transient-org
+(transient-define-prefix pj/transient-org()
     "Dailies"
-    [:description
-     "Dailies"
+    ["Dailies"
      ["Actions"
       ("c" "Capture" org-capture)
       ("f" "Find or create node" org-roam-node-find)
@@ -115,10 +114,9 @@ Org-mode properties drawer already, keep the headline and don’t insert
       ("r" "Go to random note" pj-random-node)
       ]])
 
-(define-transient-command pj/transient-dailies
+(transient-define-prefix pj/transient-dailies()
     "Dailies"
-    [:description
-     "Dailies"
+    ["Dailies"
      ["Actions"
       ("t" "Go to today" org-roam-dailies-goto-today)
       ("c" "Capture today" org-roam-dailies-capture-today)
