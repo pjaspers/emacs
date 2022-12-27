@@ -139,9 +139,9 @@ Ready to be pasted in the Gemfile"
   (interactive)
   (unwind-protect
       (progn
-        (linum-mode 1)
+        (display-line-numbers-mode 1)
         (goto-line (read-number "Goto line: ")))
-    (linum-mode -1)))
+    (display-line-numbers-mode -1)))
 
 (defun pjaspers-toggle-margins()
   "Toggles between a buffer with margins that center it and one without any margins. Or at least tries to."
