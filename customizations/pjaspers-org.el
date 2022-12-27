@@ -48,8 +48,9 @@
 
 (setq org-confirm-babel-evaluate nil)
 
-(with-eval-after-load 'ox
-  (require 'ox-hugo))
+;; Markdown export?
+;; (with-eval-after-load 'ox
+;;  (require 'ox-hugo))
 
 (setq org-roam-dailies-directory "dailies/")
 (setq org-roam-dailies-capture-templates
@@ -94,8 +95,8 @@ Org-mode properties drawer already, keep the headline and don’t insert
       (kill-line))))
 
 (transient-define-prefix pj/transient-org()
-    "Dailies"
-    ["Dailies"
+    "Notekeeping"
+    ["Such notekeeping"
      ["Actions"
       ("c" "Capture" org-capture)
       ("f" "Find or create node" org-roam-node-find)
@@ -112,7 +113,10 @@ Org-mode properties drawer already, keep the headline and don’t insert
       ("g" "Agenda" org-agenda)
       ("t" "Go to today note" org-roam-dailies-goto-today)
       ("r" "Go to random note" pj-random-node)
-      ]])
+      ]
+     ["Housekeeping"
+      ("s" "Sync DB" org-roam-db-sync)
+     ]])
 
 (transient-define-prefix pj/transient-dailies()
     "Dailies"

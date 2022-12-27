@@ -15,16 +15,9 @@
 
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
-(setq deft-directory "~/Documents/notes")
-(setq deft-recursive t)
-
 (set-fontset-font t 'symbol (font-spec :family "Apple Color Emoji") nil 'prepend)
 
-(use-package selectrum
-  :ensure t)
 (use-package prescient
-  :ensure t)
-(use-package selectrum-prescient
   :ensure t)
 (use-package marginalia
 :ensure t)
@@ -32,26 +25,8 @@
 :ensure t)
 (ido-mode 'nil)
 (mini-frame-mode +1)
-(selectrum-mode +1)
-(selectrum-prescient-mode +1)
 (prescient-persist-mode +1)
 (marginalia-mode +1)
-(advice-add #'marginalia-cycle :after
-              (lambda () (when (bound-and-true-p selectrum-mode) (selectrum-exhibit))))
-(use-package embark
-  :ensure t
-  :bind
-  ("C-A-a" . embark-act))
-(use-package consult
-  :ensure t)
-(use-package embark-consult
-  :ensure t
-  :after (embark consult)
-  :demand t ; only necessary if you have the hook below
-  ;; if you want to have consult previews as you move around an
-  ;; auto-updating embark collect buffer
-  :hook
-  (embark-collect-mode . embark-consult-preview-minor-mode))
 
 (custom-set-variables
  '(mini-frame-show-parameters
@@ -66,17 +41,13 @@
   ;;       orderless-component-separator #'orderless-escapable-split-on-space)
   (setq completion-styles '(orderless)
         completion-category-defaults nil
-        completion-category-overrides '((file (styles partial-completion)))))
-
-(setq selectrum-extend-current-candidate-highlight t)
-(set-face-attribute 'selectrum-current-candidate nil
-  :background "#F6FECD")
+        completion-category-overrides '((file (styles partial-completion))))
+  :ensure t)
 
 (require 'project)
 
 (use-package vterm
     :ensure t)
-
 (use-package pinboard
   :ensure t)
 
@@ -90,7 +61,8 @@
 ;; selectrum like thing
 (use-package vertico
   :init
-  (vertico-mode))
+  (vertico-mode)
+  :ensure t)
 
 (defun org-roam-create-note-from-headline ()
   "Create an Org-roam note from the current headline and jump to it.
@@ -112,32 +84,17 @@ Org-mode properties drawer already, keep the headline and don’t insert
     (goto-char (point-min))
     ))
 
-(define-transient-command pj/transient-org
-    "Dailies"
-    [:description
-     "Dailies"
-     ["Actions"
-      ("c" "Capture" org-capture)
-      ("a" "Agenda" org-agenda)
-      ("f" "Find or create node" org-roam-node-find)
-      ("i" "Insert node" org-roam-node-insert)
-      ("d" "Dailies" pj/transient-dailies)
-      ("r" "Create node from headline" org-roam-create-note-from-headline)
-      ]])
+(setq erc-email-userid "pjaspers/irc.libera.chat") ;; Example with Libera.Chat
 
-(define-transient-command pj/transient-dailies
-    "Dailies"
-    [:description
-     "Dailies"
-     ["Actions"
-      ("d" "Go to today" org-roam-dailies-goto-today)
-      ("c" "Capture today" org-roam-dailies-capture-today)
-      ("G" "Go to date" org-roam-dailies-goto-date)
-      ("i" "More fun" pj/dailies)
-      ]
-     ["Navigation"
-      ("n" "next" org-roam-dailies-goto-next-note :transient t)
-      ("p" "prev" org-roam-dailies-goto-previous-note :transient t)]])
+(defun run-erc ()
+  "Start erc with all things configured to join chat.sr.ht"
+  (interactive)
+  (erc-tls :server "chat.sr.ht"
+           :port 6697
+           :nick "pjaspers"
+           :password "AKgzX2QAAAAAAAAIcGphc3BlcnOfeCWA/+7h4Nv+JbbO31hH0fE2DoofYSxBh4Fc86I1Zw"))
+
+(use-package deadgrep :ensure t)
 
 (provide 'pjaspers-little-drawer)
 ;;; pjaspers-litte-drawer.el ends here
