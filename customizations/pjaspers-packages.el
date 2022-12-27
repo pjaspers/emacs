@@ -59,10 +59,6 @@
 ;; pjaspers-vc
 (use-package magit
   :ensure t)
-(use-package gitconfig-mode
-  :ensure t)
-(use-package gitignore-mode
-  :ensure t)
 
 ;; pjaspers-editing
 (use-package dumb-jump
@@ -85,6 +81,8 @@
   :ensure t)
 (use-package rainbow-delimiters
   :ensure t)
+
+(use-package ob-deno :ensure t)
 
 ;; pjaspers-ui
 
