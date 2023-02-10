@@ -33,11 +33,7 @@
   :ensure t)
 (use-package rubocop
   :ensure t)
-(use-package projectile-rails
-  :ensure t)
 (use-package yari
-  :ensure t)
-(use-package projectile
   :ensure t)
 
 ;; pjaspers-web
