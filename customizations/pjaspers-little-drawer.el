@@ -96,5 +96,22 @@ Org-mode properties drawer already, keep the headline and don’t insert
 
 (use-package deadgrep :ensure t)
 
+(defun thing (&rest _)
+  (let* (
+         (name (if (project-current) (project-name (project-current)) (buffer-file-name)))
+         (default-color '("#335EA8" . "#85CEEB" ))
+         (color (cond ((string-match "radio-api" (or name "")) '("#8D5EA8" . "white"))
+                      ((string-match "radio-sites" (or name "")) '("#3BACA8" . "white"))
+                      (t default-color))))
+    (set-face-background 'mode-line (car color))
+    (set-face-foreground 'mode-line (cdr color))))
+
+;; todo:
+;; - make this bail earlier
+;; - make this use the name as a kind of hashing thing for a color, so each project automagically has it
+;; - roll it up in minor mode?
+;; https://stackoverflow.com/questions/47456134/emacs-lisp-hooks-for-detecting-change-of-active-buffer
+(add-hook 'post-command-hook 'thing)
+
 (provide 'pjaspers-little-drawer)
 ;;; pjaspers-litte-drawer.el ends here
