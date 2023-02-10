@@ -33,10 +33,6 @@
 ;; Look up symbols in ruby `ri' to using yari.
 (define-key 'help-command (kbd "R") 'yari)
 
-;; Use projectile for finding
-(require 'projectile)
-(add-hook 'projectile-mode-hook 'projectile-rails-on)
-
 ;; Use chruby for switching rubies
 (require 'chruby)
 ;; Default ruby
@@ -54,8 +50,6 @@
 (defun pjaspers-ruby-mode-hook ()
   "Load whenever ruby gets loaded."
   (whitespace-mode 1)
-  (projectile-mode 1)
-  (local-set-key [M-t] 'projectile-find-file)
   (setq ruby-insert-encoding-magic-comment nil)
   ;; enable a REPL process loaded with your
   ;; ruby project that provides lots of code insight.

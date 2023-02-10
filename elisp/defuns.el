@@ -145,12 +145,18 @@ Ready to be pasted in the Gemfile"
 
 (defun pjaspers-toggle-margins()
   "Toggles between a buffer with margins that center it and one without any margins. Or at least tries to."
-  (interactive nil)
-  (princ left-margin-width)
-  (if (> (or (car (window-margins)) 0) 0)
-      (set-window-margins nil 0 0)
-    (let ((margin (/ (window-width) 5)))
-      (set-window-margins nil margin margin))))
+  (interactive)
+  (let ((left-margin 8)
+        (right-margin 6)
+        (window (selected-window)))
+    (if (> (or (car (window-margins)) 0) 0)
+        (progn
+          (set-window-margins window 0 0)
+          (setq line-spacing nil))
+        (progn
+          (set-window-margins window left-margin right-margin)
+          (setq line-spacing 1)))))
+
 
 (defun pjaspers-ignored-ag()
   (interactive)
