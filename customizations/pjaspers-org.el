@@ -43,6 +43,7 @@
  '((emacs-lisp . t)
    (ruby . t)
    (shell . t)
+   (sqlite . t)
    (deno . t)
    ))
 
