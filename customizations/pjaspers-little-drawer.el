@@ -20,9 +20,9 @@
 (use-package prescient
   :ensure t)
 (use-package marginalia
-:ensure t)
+  :ensure t)
 (use-package mini-frame
-:ensure t)
+  :ensure t)
 (ido-mode 'nil)
 (mini-frame-mode +1)
 (prescient-persist-mode +1)
@@ -47,7 +47,7 @@
 (require 'project)
 
 (use-package vterm
-    :ensure t)
+  :ensure t)
 (use-package pinboard
   :ensure t)
 
@@ -62,6 +62,10 @@
 (use-package vertico
   :init
   (vertico-mode)
+  :ensure t)
+(use-package vertico-prescient
+  :init
+  (vertico-prescient-mode)
   :ensure t)
 
 (defun org-roam-create-note-from-headline ()
