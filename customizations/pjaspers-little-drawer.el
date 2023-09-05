@@ -117,5 +117,19 @@ Org-mode properties drawer already, keep the headline and don’t insert
 ;; https://stackoverflow.com/questions/47456134/emacs-lisp-hooks-for-detecting-change-of-active-buffer
 (add-hook 'post-command-hook 'thing)
 
+(setq-default indicate-buffer-boundaries 'left)
+(pixel-scroll-precision-mode)
+
+;; Make right-click do something sensible
+(when (display-graphic-p)
+  (context-menu-mode))
+
+;; which-key: shows a popup of available keybindings when typing a long key
+;; sequence (e.g. C-x ...)
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode))
+
 (provide 'pjaspers-little-drawer)
 ;;; pjaspers-litte-drawer.el ends here
