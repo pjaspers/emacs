@@ -49,16 +49,16 @@
 
 (setq org-confirm-babel-evaluate nil)
 
-;; Markdown export?
-;; (with-eval-after-load 'ox
-;;  (require 'ox-hugo))
+;; Markdown export
+(require 'ox-md nil t)
 
 (setq org-roam-dailies-directory "dailies/")
 (setq org-roam-dailies-capture-templates
       '(("d" "default" entry
          "* %?"
          :target (file+head "%<%Y-%m-%d>.org"
-                            "#+title: %<%Y-%m-%d>\n"))))
+                            "#+title: %<%Y-%m-%d>\n"))
+        ))
 
 (setq org-roam-capture-templates
       '(("d" "default" plain "%?"
