@@ -14,6 +14,10 @@
 (delete-selection-mode t)
 
 (prefer-coding-system 'utf-8)
+;; to make tramp play nice when ssh-ing to a mac, otherwise I get the
+;; weird mac line endings.
+(setq default-buffer-file-coding-system 'utf-8-unix)
+
 
 ; pick up changes to files on disk automatically (ie, after git pull)
 (global-auto-revert-mode 1)
