@@ -14,7 +14,6 @@
 (define-key pj-bindings-map (kbd "C-x C-b")  'ibuffer)
 (define-key pj-bindings-map (kbd "C-x g") 'magit-status)
 (define-key pj-bindings-map (kbd "C-c g") 'magit-file-dispatch)
-(define-key pj-bindings-map (kbd "M-a") 'align-to-equals)
 
 (define-key pj-bindings-map (kbd "C-x p") 'pjaspers-ido-find-project)
 (define-key pj-bindings-map (kbd "<f5>") 'pjaspers-open-notes-file)
