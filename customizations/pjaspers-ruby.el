@@ -8,24 +8,24 @@
 ;;
 ;; Rake files are ruby, too, as are gemspecs, rackup files, and gemfiles.
 (add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Rakefile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Gemfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Guardfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Capfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.cap\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.thor\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.rabl\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Thorfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Vagrantfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.jbuilder\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Podfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.podspec\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Puppetfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Berksfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Appraisals\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-ts-mode))
+(add-to-list 'auto-mode-alist '("Rakefile\\'" . ruby-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-ts-mode))
+(add-to-list 'auto-mode-alist '("Gemfile\\'" . ruby-ts-mode))
+(add-to-list 'auto-mode-alist '("Guardfile\\'" . ruby-ts-mode))
+(add-to-list 'auto-mode-alist '("Capfile\\'" . ruby-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.cap\\'" . ruby-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.thor\\'" . ruby-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.rabl\\'" . ruby-ts-mode))
+(add-to-list 'auto-mode-alist '("Thorfile\\'" . ruby-ts-mode))
+(add-to-list 'auto-mode-alist '("Vagrantfile\\'" . ruby-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.jbuilder\\'" . ruby-ts-mode))
+(add-to-list 'auto-mode-alist '("Podfile\\'" . ruby-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.podspec\\'" . ruby-ts-mode))
+(add-to-list 'auto-mode-alist '("Puppetfile\\'" . ruby-ts-mode))
+(add-to-list 'auto-mode-alist '("Berksfile\\'" . ruby-ts-mode))
+(add-to-list 'auto-mode-alist '("Appraisals\\'" . ruby-ts-mode))
 
 ;; We never want to edit Rubinius bytecode
 (add-to-list 'completion-ignored-extensions ".rbc")
@@ -35,8 +35,9 @@
 
 ;; Use chruby for switching rubies
 (require 'chruby)
-;; Default ruby
-(chruby "ruby-2.3.4")
+(require 'chruby nil t)
+(if (featurep 'chruby) (chruby "ruby-3.1.4"))
+
 (require 'rubocop)
 
 ;; Making inf-ruby work with pry
@@ -47,7 +48,7 @@
 ;; (setq inf-ruby-prompt-pattern "^\\[[0-9]+\\] pry\\((.*)\\)[>*\"'] *")
 
 ;; setup ruby buffers
-(defun pjaspers-ruby-mode-hook ()
+(defun pjaspers-ruby-ts-mode-hook ()
   "Load whenever ruby gets loaded."
   (whitespace-mode 1)
   (setq ruby-insert-encoding-magic-comment nil)
@@ -56,14 +57,10 @@
   ;; https://github.com/nonsequitur/inf-ruby
   ;; (inf-ruby-minor-mode +1)
 
-  ;; enable handy ruby tools.
-  ;; https://github.com/rejeep/ruby-tools.el
-  (ruby-tools-mode +1)
-
   ;; CamelCase aware editing operations
   (subword-mode +1))
 
-(add-hook 'ruby-mode-hook 'pjaspers-ruby-mode-hook)
+(add-hook 'ruby-ts-mode-hook 'pjaspers-ruby-ts-mode-hook)
 
 
 (provide 'pjaspers-ruby)
