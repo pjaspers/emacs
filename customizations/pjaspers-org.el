@@ -9,6 +9,8 @@
 (setq org-agenda-files '("~/Documents/notes"))
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 
+(require 'org-roam-dailies)
+
 ;; Org-Roam specific
 (setq org-roam-directory "/Users/pjaspers/Documents/notes")
 
@@ -21,8 +23,8 @@
          "* %^{author} - %^{quote}")
         ("m" "Meeting" entry (file+headline org-default-notes-file "Notes")
          "* Meeting: %?\nEntered on %U\nAttendees:\nSummary:\nTodos:\n  %i\n  %a")
-        ("u" "URL" entry (file+headline org-default-notes-file "Notes")
-         "* %^{description}\n %^{url}")))
+        ("u" "URL" table-line (file+headline "/Users/pjaspers/Documents/notes/20231024164142-links_i_want_to_read_some_time.org" "To read")
+         "|%t|%^{url}|%^{description}|")))
 
 (setq org-refile-targets '((nil :maxlevel . 4)
                                 ; all top-level headlines in the
