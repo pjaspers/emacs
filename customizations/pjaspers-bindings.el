@@ -76,6 +76,11 @@
 (define-minor-mode pjaspers-bindings-mode
   "A mode that activates my custom bindings."
   t nil pj-bindings-map)
+(pjaspers-bindings-mode 1)
+;; (define-minor-mode pjaspers-bindings-mode
+;;  "A mode that activates my custom bindings."
+;;  :global t :lighter nil :init-value t :keymap pj-bindings-map)
+
 
 (provide 'pjaspers-bindings)
 ;;; pjaspers-bindings.el ends here
