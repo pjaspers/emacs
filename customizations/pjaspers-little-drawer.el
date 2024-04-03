@@ -131,5 +131,15 @@ Org-mode properties drawer already, keep the headline and don’t insert
   :config
   (which-key-mode))
 
+;; Garbage-collect on focus-out, Emacs should feel snappier.
+(unless (version< emacs-version "27.0")
+  (add-function :after after-focus-change-function
+                (lambda ()
+                  (unless (frame-focus-state)
+                    (garbage-collect)))))
+
+;; allow y/n
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 (provide 'pjaspers-little-drawer)
 ;;; pjaspers-litte-drawer.el ends here
