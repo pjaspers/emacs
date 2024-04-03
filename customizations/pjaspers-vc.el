@@ -13,7 +13,7 @@
 ;; Magit
 (eval-after-load 'magit
   '(progn
-     (setq magit-git-executable "/usr/local/bin/git")
+     (setq magit-git-executable (concat pjaspers-homebrew "/bin/git"))
      ))
 
 (provide 'pjaspers-vc)

@@ -28,8 +28,23 @@
 (setq custom-file pjaspers-custom-file)
 (when (file-exists-p custom-file) (load "custom"))
 
+;; Fix env variables, so that we can use them in the rest of the config
+(require 'exec-path-from-shell)
+(dolist (var '("LANG" "LC_CTYPE" "HOMEBREW_PREFIX"))
+  (add-to-list 'exec-path-from-shell-variables var))
+
+;; OS X has an issue with picking up the right system env
+;; Explictly setting it here (So shell-command and buddies can use it)
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+
+(defconst pjaspers-homebrew
+  (getenv "HOMEBREW_PREFIX")
+  "Homebrew prefix")
+
 ;; Homebrew dir
-(let ((default-directory "/usr/local/share/emacs/site-lisp/"))
+;; (getenv "HOMEBREW_PREFIX")
+(let ((default-directory (concat pjaspers-homebrew "/share/emacs/site-lisp/")))
   (normal-top-level-add-subdirs-to-load-path))
 
 (add-to-list 'load-path pjaspers-customizations-directory)
@@ -59,9 +74,6 @@
 (require 'pjaspers-bindings)
 
 (require 'pjaspers-little-drawer)
-
-(setenv "LANG" "en_BE.UTF-8")
-(setenv "LC_ALL" "en_BE.UTF-8")
 
 (add-to-list 'load-path pjaspers-elisp-directory)
 (load "defuns")            ;; Lisp helper functions

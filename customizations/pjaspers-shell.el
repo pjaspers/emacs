@@ -8,15 +8,10 @@
 ;;; Code:
 ;; Homebrew path
 (add-to-list 'exec-path "/usr/local/bin")
+(add-to-list 'exec-path (concat pjaspers-homebrew "/bin"))
 
 ; PDF LaTeX
 (add-to-list 'exec-path "/Library/TeX/texbin")
-
-(require 'exec-path-from-shell)
-;; OS X has an issue with picking up the right system env
-;; Explictly setting it here (So shell-command and buddies can use it)
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize))
 
 ; can't write over prompt, that would be weird
 (setq comint-prompt-read-only t)
