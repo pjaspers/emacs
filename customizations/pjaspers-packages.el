@@ -35,6 +35,21 @@
   :ensure t)
 (use-package yari
   :ensure t)
+(use-package eglot
+  ;; no :ensure t here because it's built-in
+
+  ;; Configure hooks to automatically turn-on eglot for selected modes
+  :custom
+  (eglot-send-changes-idle-time 0.1)
+
+  :config
+  (fset #'jsonrpc--log-event #'ignore)  ; massive perf boost---don't log every event
+  ;; Sometimes you need to tell Eglot where to find the language server
+                                        ; (add-to-list 'eglot-server-programs
+                                        ;              '(haskell-mode . ("haskell-language-server-wrapper" "--lsp")))
+  )
+;; (with-eval-after-load 'eglot
+;;   (add-to-list 'eglot-server-programs '((ruby-mode ruby-ts-mode) "ruby-lsp")))
 
 ;; pjaspers-web
 (use-package web-mode
