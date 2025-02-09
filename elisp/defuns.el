@@ -219,6 +219,12 @@ If no region is active, the whole file is formatted."
   (when buffer-file-name
     (kill-new (file-truename buffer-file-name))))
 
+(defun copy-ze-blog-to-kill-ring ()
+  "copy an note's path to pjaspers.com"
+  (interactive)
+  (when buffer-file-name
+    (kill-new (concat "https://pjaspers.com/n/" (file-name-base buffer-file-name)))))
+
 (defun eddy ()
   "Like frasier, and niles, but smaller"
   (interactive)
