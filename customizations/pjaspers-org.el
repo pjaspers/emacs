@@ -5,15 +5,15 @@
 ;; Org-mode is amazing.  I hardly use any of it and it's still great.
 ;;
 ;;; Code:
-(setq org-directory "~/Documents/notes")
-(setq org-agenda-files '("~/Documents/notes"))
+(setq org-directory (expand-file-name "~/development/me/notes"))
+(setq org-agenda-files org-directory)
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 
 (require 'org-roam-dailies)
 
 ;; Org-Roam specific
-(setq org-roam-directory "/Users/pjaspers/Documents/notes")
-
+(setq org-roam-directory org-directory)
+(setq links-file (concat org-directory "/20231024164142-links_i_want_to_read_some_time.org"))
 (setq org-capture-templates
       '(("t" "Todo" entry (file+headline org-default-notes-file "Tasks")
              "* TODO %?\n  %T\n%i\n  %a")
@@ -23,8 +23,14 @@
          "* %^{author} - %^{quote}")
         ("m" "Meeting" entry (file+headline org-default-notes-file "Notes")
          "* Meeting: %?\nEntered on %U\nAttendees:\nSummary:\nTodos:\n  %i\n  %a")
-        ("u" "URL" table-line (file+headline "/Users/pjaspers/Documents/notes/20231024164142-links_i_want_to_read_some_time.org" "To read")
-         "|%t|%^{url}|%^{description}|")))
+        ("u" "URL" entry (file+headline links-file "Links")
+         "*** %^{title}
+:PROPERTIES:
+:DATE: %t
+:URL: %^{url}
+:TAGS: %^{tags}
+:END:
+%^{description}")))
 
 (setq org-refile-targets '((nil :maxlevel . 4)
                                 ; all top-level headlines in the
